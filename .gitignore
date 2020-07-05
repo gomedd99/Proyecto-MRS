@@ -1,0 +1,10 @@
+
+# MacOS ignored files
+.DS_store
+
+# Default ignored files
+Proyecto-MRS.iml
+/workspace.xml
+.idea/
+
+/out
