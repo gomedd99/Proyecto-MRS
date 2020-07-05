@@ -8,3 +8,9 @@ Proyecto-MRS.iml
 .idea/
 
 /out
+
+# Ignored files NetBeans
+/nbproject
+/build
+build.xml
+manifest.mf
