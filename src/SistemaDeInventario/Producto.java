@@ -15,7 +15,7 @@ public class Producto implements Serializable {
 		return Nombre;
 	}
 
-	public Boolean setNombre(String Nombre) {
+	public Boolean setNombre(String ) {
         try {
             this.Nombre = Nombre;
         } catch(Exception e) {
