@@ -6,14 +6,15 @@ import SistemaDePago.Pago;
 public class Orden {
     private Pago bill;
     private Carrito Productos;
-    private static int cuenta_ordenes;
+
+    private static int cuentaOrdenes;
     public int id;
 
     public Orden(Pago pago, Carrito carrito) {
         bill = pago;
         Productos = carrito;
-        cuenta_ordenes++;
-        id = cuenta_ordenes;
+        cuentaOrdenes++;
+        id = cuentaOrdenes;
     }
 
     public Boolean verificarPago() {
