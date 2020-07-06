@@ -76,8 +76,8 @@ public class Carrito {
         for (int i = 0; i < platillos.size(); i++) {
             Platillo p = platillos.get(i);
             strPlatillos += p.getNombre() + " " + p.getCosto() + " \n";
-            return strPlatillos;
         }
+        return strPlatillos; // return fuera de for
     }
 
     @Override
