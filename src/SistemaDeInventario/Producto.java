@@ -64,7 +64,11 @@ public class Producto implements Serializable {
         }
         return false;
     }
-
+    public Boolean comprobarExistensias(int recursos){
+        if((Existensias - recursos) >= 0 )
+            return true;
+        return false;
+    }
 
 
 	@Override

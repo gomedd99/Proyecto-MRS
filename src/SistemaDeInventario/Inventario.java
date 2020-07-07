@@ -8,11 +8,11 @@ import java.io.ObjectInputStream;
 
 public class Inventario {
     private int numeroDeProductos;
-    private String nombreArchivo;
+    private String nombreArchivo ;
     private ArrayList<Producto> Inven;
 
-	public Inventario(String nombreArchivo) throws FileNotFoundException, IOException, ClassNotFoundException{
-        this.nombreArchivo = nombreArchivo;
+	public Inventario() throws FileNotFoundException, IOException, ClassNotFoundException{
+        this.nombreArchivo = "Inventario.bin";
         ObjectInputStream ois = null;
         try {
             FileInputStream fis = new FileInputStream( nombreArchivo );
