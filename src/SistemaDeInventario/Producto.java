@@ -5,7 +5,7 @@ public class Producto implements Serializable {
     private int id;
     private int Existensias;
 
-	public Producto(String Nombre, int id, int Existensias) {
+	public Producto(String Nombre, int Existensias) {
 		this.Nombre = Nombre;
 		this.id = id;
 		this.Existensias = Existensias;
