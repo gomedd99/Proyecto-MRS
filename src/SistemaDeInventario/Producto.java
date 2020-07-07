@@ -1,4 +1,4 @@
-package SistemaDeInventario
+package sistemadeinventario;
 import java.io.Serializable;
 public class Producto implements Serializable {
     private String Nombre;
