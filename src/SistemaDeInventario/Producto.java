@@ -24,7 +24,7 @@ public class Producto implements Serializable {
 	}
 
 	public int getId() {
-		return id;
+		return id+1;
 	}
 
 	public Boolean setId(int id) {
@@ -57,4 +57,18 @@ public class Producto implements Serializable {
         }
         return true;
     }
+    public Boolean disminuirExistencias(int disExistensias){
+        if((Existensias - disExistensias) >= 0 ){
+            Existensias -= disExistensias;
+            return true;
+        }
+        return false;
+    }
+
+
+
+	@Override
+	public String toString() {
+		return "Producto [Nombre=" + Nombre + ", id=" + (id+1) + ", Existensias=" + Existensias + "]";
+	}
 }
