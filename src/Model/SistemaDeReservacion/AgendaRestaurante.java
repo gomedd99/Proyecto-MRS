@@ -1,7 +1,4 @@
-package SistemaDeReservacion;
-
-import SistemaDeAutenticacion.Usuario;
-import SistemaDeOrdenes.Orden;
+package Model.SistemaDeReservacion;
 
 import java.util.ArrayList;
 import java.util.Calendar;

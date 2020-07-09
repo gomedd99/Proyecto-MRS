@@ -1,6 +1,6 @@
-package SistemaDePago;
+package Model.SistemaDePago;
 
-import SistemaDeCarrito.Carrito;
+import Model.SistemaDeCarrito.Carrito;
 
 public class Comprobante {
     private Carrito carrito;

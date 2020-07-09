@@ -1,6 +1,6 @@
-package SistemaDeCarrito;
+package Model.SistemaDeCarrito;
 
-import SistemaDeMenu.Platillo;
+import Model.SistemaDeMenu.Platillo;
 
 import java.util.ArrayList;
 import java.util.Iterator;

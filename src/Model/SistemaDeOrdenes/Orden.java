@@ -1,7 +1,7 @@
-package SistemaDeOrdenes;
+package Model.SistemaDeOrdenes;
 
-import SistemaDeCarrito.Carrito;
-import SistemaDePago.Pago;
+import Model.SistemaDeCarrito.Carrito;
+import Model.SistemaDePago.Pago;
 
 public class Orden {
     private Pago bill;

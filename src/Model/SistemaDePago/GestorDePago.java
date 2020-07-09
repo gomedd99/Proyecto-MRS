@@ -1,7 +1,7 @@
-package SistemaDePago;
+package Model.SistemaDePago;
 
-import SistemaDeAutenticacion.Usuario;
-import SistemaDeCarrito.Carrito;
+import Model.SistemaDeAutenticacion.Usuario;
+import Model.SistemaDeCarrito.Carrito;
 
 public class GestorDePago {
     public GestorDePago() {
