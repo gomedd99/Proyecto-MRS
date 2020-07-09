@@ -1,4 +1,4 @@
-package sistemadeinventario;
+package Model.SistemaDeInventario;
 import java.io.Serializable;
 import java.util.ArrayList;
 public class ListaDeProductos implements Serializable {
