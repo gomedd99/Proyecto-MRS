@@ -1,6 +1,4 @@
-package SistemaDeOrdenes;
-
-import SistemaDeMenu.Platillo;
+package Model.SistemaDeOrdenes;
 
 import java.util.ArrayList;
 import java.util.Iterator;

@@ -1,41 +1,56 @@
-package SistemaDeReservacion;
-
-import SistemaDeAutenticacion.Usuario;
-import SistemaDeOrdenes.Orden;
+package Model.SistemaDeReservacion;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
 
 public class AgendaRestaurante {
-    private ArrayList<Reservacion> reservacions;
+
+    private ArrayList<Reservacion> reservaciones;
 
     public AgendaRestaurante() {
-        this.reservacions = new ArrayList<Reservacion>();
+        this.reservaciones = new ArrayList<Reservacion>();
     }
 
     public ArrayList<Reservacion> getReservacions() {
-        return reservacions;
+        return reservaciones;
     }
 
     public Reservacion buscarReservacion(Calendar fecha, String usuario){
         // Busca la reservacion la regresa, si no la encuentra
         // regresa null
-        for (int i=0;i<reservacions.size();i++) {
-            Reservacion reservacion = reservacions.get(i);
+        Reservacion regresar = null;
+        for (int i=0; i<reservaciones.size(); i++) {
+            Reservacion reservacion = reservaciones.get(i);
             // El metodo compareTo() devuelve 0 si son iguales.
             if ( reservacion.getFecha().compareTo(fecha) == 0 &&
                  reservacion.getUsuario().getNombre() == usuario){
-                return reservacion;
+                regresar = reservacion;
+                break;
             }
         }
-        return null;
+        return regresar;
+    }
+
+    public Reservacion buscarReservacion(int id){
+        // Busca la reservacion la regresa, si no la encuentra
+        // regresa null
+        Reservacion regresar = null;
+        for (int i=0; i<reservaciones.size(); i++) {
+            Reservacion reservacion = reservaciones.get(i);
+            // El metodo compareTo() devuelve 0 si son iguales.
+            if ( reservacion.getId() == id ){
+                regresar = reservacion;
+                break;
+            }
+        }
+        return regresar;
     }
 
     public boolean agregarReservacion(Reservacion nuevaReservacion){
         boolean regresar = true;
         try {
-            reservacions.add(nuevaReservacion);
+            reservaciones.add(nuevaReservacion);
         }
         catch (Exception e) {
             System.out.println("ERROR: No se agrego la reservacion");
@@ -52,7 +67,7 @@ public class AgendaRestaurante {
         try {
             // Elimina el platillo con ID id
             // Iterator.remove()
-            Iterator itr = reservacions.iterator();
+            Iterator itr = reservaciones.iterator();
             while (itr.hasNext())
             {
                 Reservacion reservacion = (Reservacion) itr.next();
@@ -76,7 +91,7 @@ public class AgendaRestaurante {
         try {
             // Elimina el platillo con ID id
             // Iterator.remove()
-            Iterator itr = reservacions.iterator();
+            Iterator itr = reservaciones.iterator();
             while (itr.hasNext())
             {
                 Reservacion reservacion = (Reservacion) itr.next();
@@ -94,8 +109,8 @@ public class AgendaRestaurante {
     @Override
     public String toString() {
         String strResevacion = "";
-        for (int i=0;i<reservacions.size();i++) {
-            Reservacion reservacion = reservacions.get(i);
+        for (int i=0; i<reservaciones.size(); i++) {
+            Reservacion reservacion = reservaciones.get(i);
             strResevacion += reservacion.toString();
             }
         return "AgendaRestaurante:\n" +

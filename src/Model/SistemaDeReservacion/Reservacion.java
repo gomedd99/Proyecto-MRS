@@ -1,7 +1,6 @@
-package SistemaDeReservacion;
+package Model.SistemaDeReservacion;
 
-import SistemaDeAutenticacion.Usuario;
-import SistemaDeCarrito.Carrito;
+import Model.SistemaDeAutenticacion.Usuario;
 
 import java.util.Calendar;
 

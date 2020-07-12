@@ -1,3 +1,7 @@
+package Model.SistemaDeInventario;
+
+import Model.SistemaDeMenu.Platillo;
+
 public class GestorInventario {
 
 

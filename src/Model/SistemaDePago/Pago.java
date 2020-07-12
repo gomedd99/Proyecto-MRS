@@ -1,6 +1,6 @@
-package SistemaDePago;
+package Model.SistemaDePago;
 
-import SistemaDeAutenticacion.Usuario;
+import Model.SistemaDeAutenticacion.Usuario;
 
 public class Pago {
     private float cuenta;
