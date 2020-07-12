@@ -24,9 +24,11 @@ public class GUISistemaDeReservacion {
 
         while(activo) {
             System.out.println("Ingrese la opción deseada " +
-                                "\n1. \tVer Agenda " +
-                                "\n2. \tEliminar una reservacion" +
-                                "\n3. \tBuscar una reservacion" +
+                                "\n1. \tVer Agenda de Hoy" +
+                                "\n2. \tVer Agenda Proxima" +
+                                "\n3. \tEliminar una reservacion" +
+                                "\n4. \tBuscar una reservacion" +
+                                "\n5. \tVer Historial" +
                                 "\n0. \tRegresar");
             opcion = ingresoDatosInt();
             clearScreen(); // limpia la pantalla
@@ -35,16 +37,24 @@ public class GUISistemaDeReservacion {
                     activo = false;
                     break;
                 case 1:
-                    verAgenda();
+                    verAgendaHoy();
                     break; // break es opcional
 
                 case 2:
-                    eliminarUnaReservacion();
+                    verAgenda();
                     break; // break es opcional
 
                 case 3:
+                    eliminarUnaReservacion();
+                    break; // break es opcional
+
+                case 4:
                     verUnaReservacion();
                     break; // break es opcional
+
+                case 5:
+                    verHistorial();
+                    break;
 
                 default:
                     System.out.println("\nEscoja una opcion valida.");
@@ -57,8 +67,18 @@ public class GUISistemaDeReservacion {
     }
 
     private void verAgenda(){
-        System.out.println("\t+ + Agenda + + ");
-        System.out.println(gestorReservacion.verReservaciones());
+        System.out.println("\t+ + Agenda Proxima + + ");
+        System.out.println(gestorReservacion.verReservacionesProximas());
+    }
+
+    private void verHistorial(){
+        System.out.println("\t- - Historial de Reservacion - - ");
+        System.out.println(gestorReservacion.verAgenda());
+    }
+
+    private void verAgendaHoy(){
+        System.out.println("\t* * Agenda de hoy * * ");
+        System.out.println(gestorReservacion.verReservacionesHoy());
     }
 
     private void eliminarUnaReservacion() throws IOException {
