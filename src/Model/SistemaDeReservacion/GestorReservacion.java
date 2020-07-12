@@ -3,6 +3,7 @@ package Model.SistemaDeReservacion;
 import Model.SistemaDeAutenticacion.Usuario;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class GestorReservacion {
@@ -101,7 +102,42 @@ public class GestorReservacion {
         return null;
     }
 
-    public String verReservaciones(){
+    public String verReservacionesHoy(){
+        ArrayList<Reservacion> reservaciones = agendaRestaurante.getReservacions();
+        // Regresa solo las reservaciones de hoy en adelante
+        Calendar hoy = Calendar.getInstance();
+        String regresar = " ";
+        for (Reservacion reservacion : reservaciones) {
+            // El metodo compareTo() devuelve 0 si son iguales.
+            // El método compareTo() devuelve 1 si el "hoy"
+            // es mayor que el "nuevaFecha"
+            Calendar fecha = reservacion.getFecha();
+            if(hoy.compareTo(fecha) == 0){
+                regresar += fecha.toString();
+            }
+        }
+        return regresar;
+    }
+
+
+    public String verReservacionesProximas(){
+        ArrayList<Reservacion> reservaciones = agendaRestaurante.getReservacions();
+        // Regresa solo las reservaciones de hoy en adelante
+        Calendar hoy = Calendar.getInstance();
+        String regresar = " ";
+        for (Reservacion reservacion : reservaciones) {
+            // El metodo compareTo() devuelve 0 si son iguales.
+            // El método compareTo() devuelve 1 si el "hoy"
+            // es mayor que el "nuevaFecha"
+            Calendar fecha = reservacion.getFecha();
+            if(hoy.compareTo(fecha) >= 0){
+                regresar += fecha.toString();
+            }
+        }
+            return regresar;
+    }
+
+    public String verAgenda(){
         return agendaRestaurante.toString();
     }
 
