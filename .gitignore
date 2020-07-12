@@ -14,3 +14,8 @@ Proyecto-MRS.iml
 /build
 build.xml
 manifest.mf
+
+# Archivos que se crean
+Inventario.bin
+ListaOrdenes.bin
+AgendaRestaurante.bin
