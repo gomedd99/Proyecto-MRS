@@ -1,5 +1,6 @@
 package Model.SistemaDeReservacion;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
@@ -7,9 +8,23 @@ import java.util.Iterator;
 public class AgendaRestaurante {
 
     private ArrayList<Reservacion> reservaciones;
+    private String nombreArchivo ;
 
-    public AgendaRestaurante() {
-        this.reservaciones = new ArrayList<Reservacion>();
+    public AgendaRestaurante() throws IOException {
+        nombreArchivo = "AgendaRestaurante.bin";
+        ObjectInputStream ois = null;
+        try {
+            FileInputStream fis = new FileInputStream( nombreArchivo );
+            ois = new ObjectInputStream( fis );
+            reservaciones = (ArrayList<Reservacion>) ois.readObject();
+            fis.close();
+        } catch(IOException | ClassNotFoundException e) {
+            reservaciones = new ArrayList<Reservacion>();
+        }finally{
+            if (ois != null) {
+                ois.close();
+            }
+        }
     }
 
     public ArrayList<Reservacion> getReservacions() {
@@ -104,6 +119,24 @@ public class AgendaRestaurante {
             regresar = false;
         }
         return regresar;
+    }
+
+    public Boolean guardarAgenda()throws IOException {
+        ObjectOutputStream oos = null;
+        try {
+            FileOutputStream fos = new FileOutputStream( nombreArchivo );
+            oos = new ObjectOutputStream( fos );
+            oos.writeObject( reservaciones );
+            fos.close();
+        } catch(IOException e) {
+            System.out.println("No guardo la agenda");
+            return false;
+        }finally{
+            if (oos != null) {
+                oos.close();
+            }
+        }
+        return true;
     }
 
     @Override
