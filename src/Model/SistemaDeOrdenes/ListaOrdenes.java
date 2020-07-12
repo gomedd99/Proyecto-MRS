@@ -73,6 +73,22 @@ public class ListaOrdenes {
         return regresar;
     }
 
+    public Orden buscarOrden(int id){
+        Orden regresar = null;
+        try {
+            // Elimina el platillo con ID id
+            // Iterator.remove()
+            for (Orden x : ordenes) {
+                if (x.getId() == id)
+                    regresar = x;
+            }
+        }
+        catch (Exception e) {
+            System.out.println("ERROR: No se borro la orden");
+        }
+        return regresar;
+    }
+
     public Boolean guardarOrdenes()throws IOException {
         ObjectOutputStream oos = null;
         try {
@@ -91,6 +107,16 @@ public class ListaOrdenes {
         return true;
     }
 
+    public String verOdernes(){
+        // Regresa las ordenes que no han sido completadas
+        String regresar = "";
+        for (Orden x : ordenes) {
+            if (x.getEstadoActual() != "LISTA!")
+                regresar = x.toString();
+        }
+        return regresar;
+    }
+
     @Override
     public String toString() {
         String strOrdenes = "";
@@ -99,8 +125,7 @@ public class ListaOrdenes {
             strOrdenes += orden.toString();
         }
 
-        return "ListaOrdenes{" +
-                 strOrdenes +
-                '}';
+        return "Lista de Ordenes:" +
+                 strOrdenes;
     }
 }
