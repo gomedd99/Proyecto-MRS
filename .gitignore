@@ -19,3 +19,4 @@ manifest.mf
 Inventario.bin
 ListaOrdenes.bin
 AgendaRestaurante.bin
+*.class
