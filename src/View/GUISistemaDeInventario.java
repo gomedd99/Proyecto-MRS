@@ -1,8 +1,10 @@
+package Model.SistemaDeInventario;
+import Model.SistemaDeInventario.*;
 import java.util.Scanner;
 import java.io.*;
 import java.io.FileOutputStream;
 public class GuiInventario{
-    public GuiInventario(){
+    public GUISistemaDeInventario(){
 
     }
     public void menuAdministradorInventario()throws FileNotFoundException, IOException, ClassNotFoundException{
