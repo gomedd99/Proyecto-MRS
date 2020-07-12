@@ -51,10 +51,9 @@ public class AgendaRestaurante {
         // Busca la reservacion la regresa, si no la encuentra
         // regresa null
         Reservacion regresar = null;
-        for (int i=0; i<reservaciones.size(); i++) {
-            Reservacion reservacion = reservaciones.get(i);
+        for (Reservacion reservacion : reservaciones) {
             // El metodo compareTo() devuelve 0 si son iguales.
-            if ( reservacion.getId() == id ){
+            if (reservacion.getId() == id) {
                 regresar = reservacion;
                 break;
             }
