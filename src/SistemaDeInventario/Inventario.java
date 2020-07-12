@@ -21,7 +21,6 @@ public class Inventario {
             Inven = (ArrayList) ois.readObject();
             fis.close();
         } catch(IOException e) {
-            System.out.println("No pude");
             numeroDeProductos = 0;
             Inven = new ArrayList<>();
         }finally{
