@@ -16,7 +16,7 @@ public class GUISistemaDeReservacion {
         gestorReservacion = new GestorReservacion();
     }
 
-    public void menuAdminReservaciones() {
+    public void menuAdminReservaciones() throws IOException {
         int opcion = 0;
         Boolean activo = true;
 
@@ -61,7 +61,7 @@ public class GUISistemaDeReservacion {
         System.out.println(gestorReservacion.verReservaciones());
     }
 
-    private void eliminarUnaReservacion(){
+    private void eliminarUnaReservacion() throws IOException {
         System.out.println("\t- - Eliminar una reservacion - -");
         System.out.println("\nIngrese el ID de la reservacion que desea eliminar:");
         int id = ingresoDatosInt();
@@ -86,19 +86,8 @@ public class GUISistemaDeReservacion {
         }
     }
 
-    private int ingresoDatosInt() {
-        Scanner scan = new Scanner(System.in);
-        while (true) {
-            try {
-                return scan.nextInt();
-            } catch (Exception e) {
-                System.out.println("Ingresa un Numero");
-                scan.nextLine();
-            }
-        }
-    }
 
-    public void menuClienteReservaciones(Usuario usr) {
+    public void menuClienteReservaciones(Usuario usr) throws IOException {
         int opcion = 0;
         Boolean activo = true;
 
@@ -142,7 +131,7 @@ public class GUISistemaDeReservacion {
 
     }
 
-    private void hacerUnaReservacion(Usuario usr) {
+    private void hacerUnaReservacion(Usuario usr) throws IOException {
         System.out.println("\t+ + Hacer una reservacion + +");
         Calendar fecha = pedirFecha();
 
@@ -156,7 +145,7 @@ public class GUISistemaDeReservacion {
         }
     }
 
-    private void eliminarUnaReservacionUsr(Usuario usr) {
+    private void eliminarUnaReservacionUsr(Usuario usr) throws IOException {
         System.out.println("\t- - Eliminar una reservacion - -");
         Calendar fecha = pedirFecha();
 
@@ -180,7 +169,7 @@ public class GUISistemaDeReservacion {
         }
     }
 
-    private void editarUnaReservacion() {
+    private void editarUnaReservacion() throws IOException {
         System.out.println("\t / / Modificar una reservacion / /");
 
         System.out.println("\nIngrese el ID de la reservacion que desea modificar:");
@@ -209,6 +198,18 @@ public class GUISistemaDeReservacion {
                 return scan.next();
             } catch (Exception e) {
                 System.out.println("Ingresa un valor valido");
+                scan.nextLine();
+            }
+        }
+    }
+
+    private int ingresoDatosInt() {
+        Scanner scan = new Scanner(System.in);
+        while (true) {
+            try {
+                return scan.nextInt();
+            } catch (Exception e) {
+                System.out.println("Ingresa un Numero");
                 scan.nextLine();
             }
         }
