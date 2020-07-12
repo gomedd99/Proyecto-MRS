@@ -1,13 +1,30 @@
 package Model.SistemaDeOrdenes;
 
+import Model.SistemaDeReservacion.Reservacion;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class ListaOrdenes {
     private ArrayList<Orden> ordenes;
+    private String nombreArchivo;
 
-    public ListaOrdenes() {
-        this.ordenes = new ArrayList<Orden>();
+    public ListaOrdenes() throws IOException {
+        nombreArchivo = "ListaOrdenes.bin";
+        ObjectInputStream ois = null;
+        try {
+            FileInputStream fis = new FileInputStream( nombreArchivo );
+            ois = new ObjectInputStream(fis);
+            ordenes = (ArrayList<Orden>) ois.readObject();
+            fis.close();
+        } catch(IOException | ClassNotFoundException e) {
+            ordenes = new ArrayList<Orden>();
+        }finally{
+            if (ois != null) {
+                ois.close();
+            }
+        }
     }
 
     public ArrayList<Orden> getOrdenes() {
@@ -54,6 +71,24 @@ public class ListaOrdenes {
             regresar = false;
         }
         return regresar;
+    }
+
+    public Boolean guardarOrdenes()throws IOException {
+        ObjectOutputStream oos = null;
+        try {
+            FileOutputStream fos = new FileOutputStream( nombreArchivo );
+            oos = new ObjectOutputStream( fos );
+            oos.writeObject( ordenes );
+            fos.close();
+        } catch(IOException e) {
+            System.out.println("No guardaron las ordenes");
+            return false;
+        }finally{
+            if (oos != null) {
+                oos.close();
+            }
+        }
+        return true;
     }
 
     @Override
