@@ -1,9 +1,9 @@
-package Model.SistemaDeInventario;
+package View;
 import Model.SistemaDeInventario.*;
 import java.util.Scanner;
 import java.io.*;
 import java.io.FileOutputStream;
-public class GuiInventario{
+public class GUISistemaDeInventario{
     public GUISistemaDeInventario(){
 
     }
