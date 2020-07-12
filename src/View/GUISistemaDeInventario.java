@@ -1,4 +1,4 @@
 package View;
 
-public class GUISistemaDeInventario {
+public class GUISistemaDeinventario {
 }

@@ -1,5 +1,3 @@
-package Model.SistemaDeInventario;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.io.FileOutputStream;
@@ -11,7 +9,7 @@ import java.io.ObjectInputStream;
 public class Inventario {
     private int numeroDeProductos;
     private String nombreArchivo ;
-    private ArrayList<Producto> Inven;
+    private ArrayList<Producto> inven;
 
 	public Inventario() throws FileNotFoundException, IOException, ClassNotFoundException{
         this.nombreArchivo = "Inventario.bin";
@@ -20,11 +18,11 @@ public class Inventario {
             FileInputStream fis = new FileInputStream( nombreArchivo );
             ois = new ObjectInputStream( fis );
             numeroDeProductos = ois.read();
-            Inven = (ArrayList) ois.readObject();
+            inven = (ArrayList) ois.readObject();
             fis.close();
         } catch(IOException e) {
             numeroDeProductos = 0;
-            Inven = new ArrayList<>();
+            inven = new ArrayList<>();
         }finally{
             if (ois != null) {
                 ois.close();
@@ -48,12 +46,12 @@ public class Inventario {
 		this.nombreArchivo = nombreArchivo;
 	}
 
-	public ArrayList<Producto> getInven() {
-		return Inven;
+	public ArrayList<Producto> getinven() {
+		return inven;
 	}
 
-	public void setInven(ArrayList<Producto> Inven) {
-		this.Inven = Inven;
+	public void setinven(ArrayList<Producto> inven) {
+		this.inven = inven;
 	}
 
     public Boolean guardarInventario()throws FileNotFoundException, IOException, ClassNotFoundException {
@@ -62,7 +60,7 @@ public class Inventario {
             FileOutputStream fos = new FileOutputStream( nombreArchivo );
             oos = new ObjectOutputStream( fos );
             oos.write( numeroDeProductos );
-            oos.writeObject( Inven );
+            oos.writeObject( inven );
             fos.close();
         } catch(IOException e) {
             System.out.println("No guardo");
@@ -77,7 +75,7 @@ public class Inventario {
 
     public Boolean agregarNuevoProducto(Producto nuevoProducto){
         try {
-            Inven.add(nuevoProducto);
+            inven.add(nuevoProducto);
             numeroDeProductos++;
             nuevoProducto.setId(numeroDeProductos-1);
         } catch(Exception e) {
@@ -87,15 +85,15 @@ public class Inventario {
     }
     public Boolean pedido(int idProducto,int totalDeProducto){
         idProducto--;
-        if(Inven.get(idProducto).disminuirExistencias(totalDeProducto))
+        if(inven.get(idProducto).disminuirExistencias(totalDeProducto))
             return true;
         return false;
     }
     public Producto getProducto(int id){
         id--;
         try {
-            if(Inven.get(id)!=null)
-                return Inven.get(id);
+            if(inven.get(id)!=null)
+                return inven.get(id);
         }catch (Exception e) {
             return null;
         }
@@ -104,17 +102,22 @@ public class Inventario {
     public String listaDeProductos(){
         String listaProductos = "\t\tLista de Productos\n";
         for (int i = 0;i < numeroDeProductos ;i++ ) {
-            listaProductos += Inven.get(i).toString()+"\n";
+            listaProductos += inven.get(i).toString()+"\n";
         }
         return listaProductos;
     }
     public String listaProductosReponerse(){
         String aReponerse = "\tProductos con bajas existencias\n";
         for (int i = 0;i < numeroDeProductos ;i++ ) {
-            if (Inven.get(i).getExistensias()<=10) {
-                aReponerse += Inven.get(i).toString()+"\n";
+            if (inven.get(i).getExistensias()<=10) {
+                aReponerse += inven.get(i).toString()+"\n";
             }
         }
         return aReponerse;
     }
+
+    public Boolean agregarExistenciasProducto(int id, int existencias){
+        return inven.get(id-1).agregarExistencias(existencias);
+    }
+
 }
