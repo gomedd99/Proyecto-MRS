@@ -10,11 +10,14 @@ public class Orden {
     private static int cuentaOrdenes;
     public int id;
 
+    private String estadoActual;
+
     public Orden(Pago pago, Carrito carrito) {
         bill = pago;
         Productos = carrito;
         cuentaOrdenes++;
         id = cuentaOrdenes;
+        estadoActual = "En lista"; // En lista, En preparacion, LISTO!
     }
 
     public Boolean verificarPago() {
@@ -46,12 +49,20 @@ public class Orden {
         this.id = id;
     }
 
+    public String getEstadoActual() {
+        return estadoActual;
+    }
+
+    public void setEstadoActual(String estadoActual) {
+        this.estadoActual = estadoActual;
+    }
+
     @Override
     public String toString() {
-        return "Orden: #" + id +
+        return "\nOrden: #" + id +
+                "Estado" + estadoActual +
                 "Pago =" + bill.getCuenta() +
-                ", Productos =" + Productos.toString() +
-                '\n';
+                ", Productos =" + Productos.toString();
     }
 
 }
