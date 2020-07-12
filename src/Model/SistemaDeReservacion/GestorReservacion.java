@@ -13,7 +13,7 @@ public class GestorReservacion {
         agendaRestaurante = new AgendaRestaurante();
     }
 
-    public Reservacion crearReservacion(Calendar aReservar , Usuario cliente){
+    public Reservacion crearReservacion(Calendar aReservar , Usuario cliente) throws IOException {
         // Regresa null cuando no es posible hacer la reservacion, porque el dia no es valido
         Reservacion nueva = null;
 
@@ -26,6 +26,7 @@ public class GestorReservacion {
             // la reservacion sí es despues de "hoy", es valida
             nueva = new Reservacion(aReservar, cliente);
             agendaRestaurante.agregarReservacion(nueva); // agrega la reservacion a la agenda
+            agendaRestaurante.guardarAgenda();
         }
 
         return nueva;
@@ -54,20 +55,21 @@ public class GestorReservacion {
         return regresar;
     }
 
-    public boolean eliminarReservacion( int id ){
+    public boolean eliminarReservacion( int id ) throws IOException {
         // Borra la reservacion de la agenda, dado un id
         // si no encuentra una reservacion con dicho id regresa null
         boolean regresar = false;
         Reservacion aEliminar = agendaRestaurante.buscarReservacion(id);
         if ( aEliminar != null){
             if ( agendaRestaurante.borrarReservacion(aEliminar) ){
+                agendaRestaurante.guardarAgenda();
                 regresar = true;
             }
         }
         return regresar;
     }
 
-    public boolean eliminarReservacion( Calendar fechaPaEliminar , String usuario){
+    public boolean eliminarReservacion( Calendar fechaPaEliminar , String usuario) throws IOException {
         // Borra la reservacion de la agenda que coincida con los datos dados
         // si no encuentra una reservacion con dicho id regresa null
         boolean regresar = false;
@@ -76,13 +78,14 @@ public class GestorReservacion {
 
         if ( aEliminar != null){
             if ( agendaRestaurante.borrarReservacion(aEliminar) ){
+                agendaRestaurante.guardarAgenda();
                 regresar = true;
             }
         }
         return regresar;
     }
 
-    public Reservacion modificarReservacion(Calendar nuevaFecha, int id){
+    public Reservacion modificarReservacion(Calendar nuevaFecha, int id) throws IOException {
         // modifica la reservacion con "id" por la fecha dada.
         // regresa true si se hizo el cambio, sino regresa false
 
@@ -92,6 +95,7 @@ public class GestorReservacion {
         // si la fecha es valida entonces se agrega a la agenda
         if ( aModificar.setFecha(nuevaFecha) ){
             agendaRestaurante.agregarReservacion(aModificar);
+            agendaRestaurante.guardarAgenda();
             return aModificar;
         }
         return null;
