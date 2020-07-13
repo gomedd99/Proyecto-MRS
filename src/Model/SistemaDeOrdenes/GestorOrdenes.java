@@ -16,12 +16,12 @@ public class GestorOrdenes {
     public Orden generarOrden(Pago pago, Carrito carrito){
 
         Orden nuevaOrden = new Orden(pago, carrito);
-
         return nuevaOrden;
     }
 
-    public boolean agregarOrden(Pago pago, Carrito carrito) throws IOException {
-        boolean x = listaOrdenes.agregarOrden( generarOrden(pago, carrito) );
+    public boolean agregarOrden(Orden miOrden) throws IOException {
+        // Agrega una orden dada.
+        boolean x = listaOrdenes.agregarOrden( miOrden );
         if (x)
             listaOrdenes.guardarOrdenes();
         return x;
