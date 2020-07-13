@@ -10,13 +10,9 @@ public class Carrito {
     private float cuenta;
 
 
-    public Carrito(ArrayList<Platillo> platillos) {
-        this.platillos = platillos;
+    public Carrito() {
+        this.platillos = new ArrayList<Platillo>();
         this.cuenta = 0;
-        for (int i=0;i<platillos.size();i++) {
-            Platillo p = platillos.get(i);
-            cuenta += p.getCosto();
-        }
     }
 
     public ArrayList<Platillo> getPlatillos() {
@@ -44,6 +40,7 @@ public class Carrito {
             System.out.println("ERROR: No se agrego el platillo");
             regresar = false;
         }
+        actualizarCuenta();
         return regresar;
     }
 
@@ -64,7 +61,16 @@ public class Carrito {
             System.out.println("ERROR: No se borro el platillo");
             regresar = false;
         }
+        actualizarCuenta();
         return regresar;
+    }
+
+    private void actualizarCuenta() {
+        // Actualiza la cuenta cada que se llama
+        for (int i=0;i<platillos.size();i++) {
+            Platillo p = platillos.get(i);
+            cuenta += p.getCosto();
+        }
     }
 
     public float getCuenta() {
@@ -82,9 +88,8 @@ public class Carrito {
 
     @Override
     public String toString(){
-        return "Carrito{" +
-                "platillos =" + platillosToString() +
-                ", cuenta=" + cuenta +
-                '}';
+        return "Carrito:" +
+                "\tPlatillos =" + platillosToString() +
+                "\tA pagar: $ " + cuenta ;
     }
 }
