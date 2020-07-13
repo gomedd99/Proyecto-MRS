@@ -1,7 +1,10 @@
 package Model.SistemaDeCarrito;
 
+import Model.SistemaDeMenu.GestorMenu;
 import Model.SistemaDeMenu.Platillo;
+import Model.SistemaDeOrdenes.GestorOrdenes;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 public class GestorCarrito {
@@ -12,9 +15,16 @@ public class GestorCarrito {
         carrito = new Carrito();
     }
 
-    public boolean agregarPatillo(Platillo platillo) {
+    public boolean agregarPatillo(int id) {
         // Agrega un solo platillo al carrito
-        return carrito.agregarPlatillos(platillo);
+        boolean regresar = false;
+        GestorMenu gestorMenu = new GestorMenu();
+        Platillo platillo = gestorMenu.getPlatillo(id); // Este debe comprobar si hay existencia del platillo
+        if ( platillo != null) {
+            carrito.agregarPlatillos(platillo);
+            regresar = true;
+        }
+        return regresar;
     }
 
     public boolean eliminarPatillo(int id) {
