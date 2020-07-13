@@ -8,6 +8,7 @@ public class GestorDePago {
     }
     public Pago generarPago(Usuario user, float cuenta){
         Pago pago = new Pago(user, cuenta);
+        pago.generarPago();
         return pago;
     }
 
