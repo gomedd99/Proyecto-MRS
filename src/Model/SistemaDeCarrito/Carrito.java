@@ -88,8 +88,8 @@ public class Carrito {
 
     @Override
     public String toString(){
-        return "Carrito:" +
-                "\tPlatillos =" + platillosToString() +
-                "\tA pagar: $ " + cuenta ;
+        return "\nCarrito:" +
+                "\n\tPlatillos =" + platillosToString() +
+                "\n\tA pagar: $ " + cuenta ;
     }
 }
