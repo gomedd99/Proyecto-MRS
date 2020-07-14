@@ -62,7 +62,7 @@ public class Menu{
             oos.writeObject( menuPlatillos );
             fos.close();
         } catch(IOException e) {
-            System.out.println("No guardo");
+            System.out.println("MISSING: Menu.bin al guardarMenu");
             return false;
         }finally{
             if (oos != null) {
@@ -85,14 +85,14 @@ public class Menu{
             if(menuPlatillos.get(id) != null)
                 return menuPlatillos.get(id);
         } catch(Exception e) {
-            System.out.println("No se encontro el platillo");
+            System.out.println("\nNo se encontro el platillo\n");
             return null;
         }
         return null;
     }
 
     public String menuC(){
-        String menu = "El menu completo es\n";
+        String menu = "El menu completo es:\n";
         for (int i = 0;i < numeroDePlatillos ; i++ ) {
             menu += menuPlatillos.get(i).informacionMenu();
         }

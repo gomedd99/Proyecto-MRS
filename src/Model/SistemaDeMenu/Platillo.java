@@ -88,7 +88,7 @@ public class Platillo implements Serializable {
 	}
 
 	public String informacionMenu() {
-		return "\t\t" +Nombre +" ID: "+(id+1) +"\n\nDescripcion\n" + Descripcion + "\nCosto: "+costo+"\n";
+		return "\n\t" +Nombre +" ID: "+(id+1) +"\nDescripcion:\n" + Descripcion + "\nCosto: "+costo+"\n";
 	}
 
 	public String informacionReceta() {
