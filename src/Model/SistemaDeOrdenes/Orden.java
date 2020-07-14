@@ -3,7 +3,9 @@ package Model.SistemaDeOrdenes;
 import Model.SistemaDeCarrito.Carrito;
 import Model.SistemaDePago.Pago;
 
-public class Orden {
+import java.io.Serializable;
+
+public class Orden implements Serializable {
     private Pago bill;
     private Carrito Productos;
 

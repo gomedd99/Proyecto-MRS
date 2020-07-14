@@ -2,9 +2,10 @@ package Model.SistemaDeReservacion;
 
 import Model.SistemaDeAutenticacion.Usuario;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
-public class Reservacion {
+public class Reservacion implements Serializable {
     private Calendar fecha;
     Usuario cliente;
 
@@ -53,7 +54,7 @@ public class Reservacion {
     public String toString() {
         return "Reservacion #: " + id  +
                 "\nFecha: " + fecha.getTime() +
-                "\nA nombre de " + cliente +
+                //"\nA nombre de " + cliente +
                 '\n';
     }
 }
