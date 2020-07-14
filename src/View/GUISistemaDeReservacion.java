@@ -16,20 +16,20 @@ public class GUISistemaDeReservacion {
         gestorReservacion = new GestorReservacion();
     }
 
-    public void menuAdminReservaciones() throws IOException {
+    public void menuAdminReservaciones() throws IOException, ClassNotFoundException {
         int opcion = 0;
         Boolean activo = true;
 
-        System.out.println("\n= =\tAdministrador de reservaciones = =\n");
+        System.out.println("\n\t= = Administrador de reservaciones = =\n");
 
         while(activo) {
             System.out.println("Ingrese la opción deseada " +
-                                "\n1. \tVer Agenda de Hoy" +
-                                "\n2. \tVer Agenda Proxima" +
-                                "\n3. \tEliminar una reservacion" +
-                                "\n4. \tBuscar una reservacion" +
-                                "\n5. \tVer Historial" +
-                                "\n0. \tRegresar");
+                                "\n\t1. Ver Agenda de Hoy" +
+                                "\n\t2. Ver Agenda Proxima" +
+                                "\n\t3. Eliminar una reservacion" +
+                                "\n\t4. Buscar una reservacion" +
+                                "\n\t5. Ver Historial" +
+                                "\n\t0. Regresar");
             opcion = ingresoDatosInt();
             clearScreen(); // limpia la pantalla
             switch (opcion) {
@@ -81,7 +81,7 @@ public class GUISistemaDeReservacion {
         System.out.println(gestorReservacion.verReservacionesHoy());
     }
 
-    private void eliminarUnaReservacion() throws IOException {
+    private void eliminarUnaReservacion() throws IOException, ClassNotFoundException {
         System.out.println("\t- - Eliminar una reservacion - -");
         System.out.println("\nIngrese el ID de la reservacion que desea eliminar:");
         int id = ingresoDatosInt();
@@ -111,15 +111,15 @@ public class GUISistemaDeReservacion {
         int opcion = 0;
         Boolean activo = true;
 
-        System.out.println("\n= =\tMenu reservaciones = =\n");
+        System.out.println("\n\t= = Mis reservaciones = =\n");
 
         while(activo) {
             System.out.println("Ingrese la opción deseada " +
-                    "\n1. \tHacer una reservacion " +
-                    "\n2. \tEliminar una reservacion" +
-                    "\n3. \tBuscar una reservacion" +
-                    "\n4. \tModificar una reservacion"+
-                    "\n0. \tRegresar");
+                    "\n\t1. Hacer una reservacion " +
+                    "\n\t2. Eliminar una reservacion" +
+                    "\n\t3. Buscar una reservacion" +
+                    "\n\t4. Modificar una reservacion"+
+                    "\n\t0. Regresar");
             opcion = ingresoDatosInt();
             clearScreen(); // limpia la pantalla
             switch (opcion) {
@@ -236,20 +236,21 @@ public class GUISistemaDeReservacion {
     }
 
     private Calendar pedirFecha(){
-        System.out.println("\nIngrese el año ");
-        int anio = ingresoDatosInt();
-
-        System.out.println("\nIngrese el mes ");
-        int mes = ingresoDatosInt();
 
         System.out.println("\nIngrese el día ");
         int dia = ingresoDatosInt();
 
-        System.out.println("\nIngrese el horario (hora:minutos) ");
-        String horario = ingresoDatosString();
-        String[] parts = horario.split(":");
-        int hora = Integer.parseInt(parts[0]);
-        int min = Integer.parseInt(parts[1]); // 654321
+        System.out.println("\nIngrese la hora ");
+        int hora = ingresoDatosInt();
+
+        System.out.println("\nIngrese minutos ");
+        int min = ingresoDatosInt();
+
+        System.out.println("\nIngrese el mes ");
+        int mes = ingresoDatosInt();
+
+        System.out.println("\nIngrese el año ");
+        int anio = ingresoDatosInt();
 
         Calendar nuevaFecha = Calendar.getInstance();
         nuevaFecha.set(anio, mes, dia, hora, min, 0);

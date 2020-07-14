@@ -10,21 +10,31 @@ public class AgendaRestaurante {
     private ArrayList<Reservacion> reservaciones;
     private String nombreArchivo ;
 
+    private int cuentaDeReservaciones;
+
+
     public AgendaRestaurante() throws IOException {
         nombreArchivo = "AgendaRestaurante.bin";
         ObjectInputStream ois = null;
         try {
             FileInputStream fis = new FileInputStream( nombreArchivo );
             ois = new ObjectInputStream( fis );
-            reservaciones = (ArrayList<Reservacion>) ois.readObject();
+            cuentaDeReservaciones = ois.read();
+            reservaciones = (ArrayList) ois.readObject();
             fis.close();
         } catch(IOException | ClassNotFoundException e) {
-            reservaciones = new ArrayList<Reservacion>();
+            cuentaDeReservaciones = 0;
+            reservaciones = new ArrayList<>();
         }finally{
             if (ois != null) {
                 ois.close();
             }
         }
+    }
+
+    public int getCuentaDeReservaciones() {
+        cuentaDeReservaciones++;
+        return cuentaDeReservaciones;
     }
 
     public ArrayList<Reservacion> getReservacions() {
@@ -63,10 +73,7 @@ public class AgendaRestaurante {
 
     public boolean agregarReservacion(Reservacion nuevaReservacion){
         boolean regresar = true;
-        try {
-            reservaciones.add(nuevaReservacion);
-        }
-        catch (Exception e) {
+        if ( !reservaciones.add(nuevaReservacion)){
             System.out.println("ERROR: No se agrego la reservacion");
             regresar = false;
         }
@@ -125,10 +132,11 @@ public class AgendaRestaurante {
         try {
             FileOutputStream fos = new FileOutputStream( nombreArchivo );
             oos = new ObjectOutputStream( fos );
+            oos.write( cuentaDeReservaciones );
             oos.writeObject( reservaciones );
             fos.close();
         } catch(IOException e) {
-            System.out.println("No guardo la agenda");
+            System.out.println("\nMISSING: AgendaRestaurante.bin en guardarAgenda()");
             return false;
         }finally{
             if (oos != null) {

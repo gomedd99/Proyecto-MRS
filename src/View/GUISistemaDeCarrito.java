@@ -24,15 +24,15 @@ public class GUISistemaDeCarrito {
         int opcion = 0;
         Boolean activo = true;
 
-        System.out.println("\n= =\tMenu de mi Carrito = =\n");
+        System.out.println("\n\t= = 🛒 Mi Carrito 🛒 = =\n");
 
         while(activo) {
             System.out.println("Ingrese la opción deseada " +
-                    "\n1. \tVer Carrito " +
-                    "\n2. \tAgregar Platillo a Carrito" +
-                    "\n3. \tEliminar Platillo de Carrito" +
-                    "\n4. \tPagar" +
-                    "\n0. \tRegresar");
+                    "\n\t1. Ver Carrito " +
+                    "\n\t2. Agregar Platillo a Carrito" +
+                    "\n\t3. Eliminar Platillo de Carrito" +
+                    "\n\t4. Pagar" +
+                    "\n\t0. Regresar");
             opcion = ingresoDatosInt();
             clearScreen(); // limpia la pantalla
             switch (opcion) {
@@ -58,8 +58,9 @@ public class GUISistemaDeCarrito {
                 default:
                     System.out.println("\nEscoja una opcion valida.");
             }
-            if (activo)
+            if (activo){
                 pressAnyKeyToContinue(); // Espera a que el usuario entre algo para continuar
+            }
             clearScreen();
         }
     }

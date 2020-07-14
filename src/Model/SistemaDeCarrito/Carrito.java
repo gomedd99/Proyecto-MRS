@@ -45,7 +45,7 @@ public class Carrito {
     }
 
     public boolean borrarPlatillo( int id ){
-        boolean regresar = true;
+        boolean regresar = false;
         try {
             // Elimina el platillo con ID id
             // Iterator.remove()
@@ -53,13 +53,14 @@ public class Carrito {
             while (itr.hasNext())
             {
                 Platillo x = (Platillo)itr.next();
-                if (x.getId() == id)
+                if (x.getId() == id){
                     itr.remove();
+                    regresar = true;
+                }
             }
         }
         catch (Exception e) {
             System.out.println("ERROR: No se borro el platillo");
-            regresar = false;
         }
         actualizarCuenta();
         return regresar;
