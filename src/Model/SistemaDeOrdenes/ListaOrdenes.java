@@ -93,7 +93,7 @@ public class ListaOrdenes {
             }
         }
         catch (Exception e) {
-            System.out.println("ERROR: No se borro la orden");
+            System.out.println("ERROR: No se encontro la orden");
         }
         return regresar;
     }
