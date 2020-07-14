@@ -1,5 +1,9 @@
-import Model.SistemaDeAutenticacion.Usuario;
+
+
+import Model.SistemaDeMenu.GestorDeMenu;
+import Model.SistemaDeUsuario.Usuarios;
 import View.*;
+import java.io.FileNotFoundException;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -8,12 +12,13 @@ public class Main {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         clearScreen();
-        GUISistemaDeAutenticacion guiA = new GUISistemaDeAutenticacion;
+        GUISistemaDeAutenticacion guiA = new GUISistemaDeAutenticacion();
         System.out.println("\t= = RESTAURANTE ``DONDE SIEMPRE´´ = =");
 
         // Que se identifique el usuario
         // se manda a si respectivo menú
-        Usuario usr = null;
+        Usuarios usr;
+        usr = null;
 
         boolean flag = true;
 
@@ -28,7 +33,7 @@ public class Main {
             switch (ir_a_menu){
                 case 1:
                     clearScreen();
-                    usr = guiA.menuClientes();
+                    usr = guiA.menuCliente();
                     if (usr != null) {
                         menuClientes(usr);
                     }
@@ -58,7 +63,7 @@ public class Main {
 
     }
 
-    private static void menuClientes(Usuario usr) throws IOException, ClassNotFoundException {
+    private static void menuClientes(Usuarios usr) throws IOException, ClassNotFoundException {
         int opcion = 0;
         Boolean activo = true;
 
@@ -76,7 +81,7 @@ public class Main {
                     activo = false;
                     break;
                 case 1:
-                    System.out.println(new GestorDeMenu().menuClientes());
+                    new GUISistemaDeMenu().menuClientes();
                     break;
 
                 case 2:
@@ -96,7 +101,7 @@ public class Main {
         }
     }
 
-    private static void menuChef() throws IOException {
+    private static void menuChef() throws IOException, FileNotFoundException, ClassNotFoundException {
         int opcion = 0;
         Boolean activo = true;
 
