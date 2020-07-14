@@ -2,7 +2,7 @@
 
 Sistema Interactivo para el Restaurante ''Donde siempre''.
 
-La se encuentra en: src / Main.java 
+El main se encuentra en: src / Main.java 
 
 `$ javac Main.java `
 
