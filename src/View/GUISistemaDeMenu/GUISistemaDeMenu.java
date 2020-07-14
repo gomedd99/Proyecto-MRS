@@ -22,7 +22,9 @@ public class GUISistemaDeMenu{
 			selector = ingresoDatosInt();
 			switch (selector) {
 				case 1:
-					System.out.println(geM.menuClompleto());
+				    try {
+                        System.out.println(geM.menuClompleto());
+                    }catch (Exception e){}
 					break;
 				case 2:
 					crearPlatillo();
@@ -30,12 +32,16 @@ public class GUISistemaDeMenu{
 				case 3:
 					System.out.println("Ingresa el id del platillo a agregar ingredientes");
 					selector = ingresoDatosInt();
-					addIngredienteFP(selector);
+					try {
+                        addIngredienteFP(selector);
+                    }catch (Exception e){}
 					break;
 				case 4:
 					System.out.println("Ingresa el id del platillo ");
 					selector = ingresoDatosInt();
-					System.out.println(informacionProductoReceta(selector));
+					try {
+                        System.out.println(informacionProductoReceta(selector));
+                    }catch (Exception e){}
 					break;
 				case 0:
 					flag = false;
@@ -44,7 +50,10 @@ public class GUISistemaDeMenu{
 					System.out.println("ingresa una opcion correwcta");
 					break;
 			}
-
+			if(flag){
+			    pressAnyKeyToContinue();
+            }
+			clearScreen();
 		}
 	}
 
@@ -131,6 +140,24 @@ public class GUISistemaDeMenu{
             scan.nextLine();
           }
         }
+    }
+
+    public static void clearScreen() {
+
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+
+    }
+
+    public static void pressAnyKeyToContinue() {
+        String seguir;
+        Scanner teclado = new Scanner(System.in);
+        System.out.println("\nPress Enter key to continue...");
+        try
+        {
+            seguir = teclado.nextLine();
+        }
+        catch(Exception ignored) {}
     }
 
 
