@@ -15,7 +15,7 @@ public class ListaDeUsuarios {
     private  int numeroDeUsuarios;
 
     public ListaDeUsuarios() throws FileNotFoundException, IOException, ClassNotFoundException{
-        nombreArchivo = "D:\\Gomedd\\Git\\ListaUsuarios.bin";
+        nombreArchivo = "ListaUsuarios.bin";
         ObjectInputStream ois = null;
         try {
             FileInputStream fis = new FileInputStream(nombreArchivo);
