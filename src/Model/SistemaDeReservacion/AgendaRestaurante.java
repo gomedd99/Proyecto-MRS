@@ -10,21 +10,31 @@ public class AgendaRestaurante {
     private ArrayList<Reservacion> reservaciones;
     private String nombreArchivo ;
 
-    public AgendaRestaurante() throws FileNotFoundException, IOException {
+    private int cuentaDeReservaciones;
+
+
+    public AgendaRestaurante() throws IOException {
         nombreArchivo = "AgendaRestaurante.bin";
         ObjectInputStream ois = null;
         try {
             FileInputStream fis = new FileInputStream( nombreArchivo );
             ois = new ObjectInputStream( fis );
+            cuentaDeReservaciones = ois.read();
             reservaciones = (ArrayList) ois.readObject();
             fis.close();
         } catch(IOException | ClassNotFoundException e) {
+            cuentaDeReservaciones = 0;
             reservaciones = new ArrayList<>();
         }finally{
             if (ois != null) {
                 ois.close();
             }
         }
+    }
+
+    public int getCuentaDeReservaciones() {
+        cuentaDeReservaciones++;
+        return cuentaDeReservaciones;
     }
 
     public ArrayList<Reservacion> getReservacions() {
@@ -117,11 +127,12 @@ public class AgendaRestaurante {
         return regresar;
     }
 
-    public Boolean guardarAgenda()throws FileNotFoundException, IOException, ClassNotFoundException {
+    public Boolean guardarAgenda()throws IOException {
         ObjectOutputStream oos = null;
         try {
             FileOutputStream fos = new FileOutputStream( nombreArchivo );
             oos = new ObjectOutputStream( fos );
+            oos.write( cuentaDeReservaciones );
             oos.writeObject( reservaciones );
             fos.close();
         } catch(IOException e) {

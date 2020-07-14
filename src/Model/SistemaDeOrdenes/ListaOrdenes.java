@@ -10,21 +10,30 @@ public class ListaOrdenes {
     private ArrayList<Orden> ordenes;
     private String nombreArchivo;
 
+    private static int cuentaOrdenes;
+
     public ListaOrdenes() throws IOException {
         nombreArchivo = "ListaOrdenes.bin";
         ObjectInputStream ois = null;
         try {
             FileInputStream fis = new FileInputStream( nombreArchivo );
             ois = new ObjectInputStream(fis);
+            cuentaOrdenes = ois.read();
             ordenes = (ArrayList<Orden>) ois.readObject();
             fis.close();
         } catch(IOException | ClassNotFoundException e) {
+            cuentaOrdenes = 0;
             ordenes = new ArrayList<Orden>();
         }finally{
             if (ois != null) {
                 ois.close();
             }
         }
+    }
+
+    public static int getCuentaOrdenes() {
+        cuentaOrdenes++;
+        return cuentaOrdenes;
     }
 
     public ArrayList<Orden> getOrdenes() {
@@ -94,6 +103,7 @@ public class ListaOrdenes {
         try {
             FileOutputStream fos = new FileOutputStream( nombreArchivo );
             oos = new ObjectOutputStream( fos );
+            oos.write( cuentaOrdenes );
             oos.writeObject( ordenes );
             fos.close();
         } catch(IOException e) {

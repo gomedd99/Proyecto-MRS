@@ -9,16 +9,14 @@ public class Orden implements Serializable {
     private Pago bill;
     private Carrito Productos;
 
-    private static int cuentaOrdenes;
     public int id;
 
     private String estadoActual;
 
-    public Orden(Pago pago, Carrito carrito) {
+    public Orden(Pago pago, Carrito carrito, int id) {
         bill = pago;
         Productos = carrito;
-        cuentaOrdenes++;
-        id = cuentaOrdenes;
+        this.id = id;
         estadoActual = "En lista"; // En lista, En preparacion, LISTO!
     }
 

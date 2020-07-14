@@ -15,7 +15,7 @@ public class GestorOrdenes {
 
     public Orden generarOrden(Pago pago, Carrito carrito){
 
-        Orden nuevaOrden = new Orden(pago, carrito);
+        Orden nuevaOrden = new Orden(pago, carrito, listaOrdenes.getCuentaOrdenes());
         return nuevaOrden;
     }
 

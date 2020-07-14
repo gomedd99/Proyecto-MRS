@@ -25,7 +25,7 @@ public class GestorReservacion {
         // valor = 0 => es la misma fecha
         if ( aReservar.compareTo(hoy) > 0 ){
             // la reservacion sí es despues de "hoy", es valida
-            nueva = new Reservacion(aReservar, cliente);
+            nueva = new Reservacion(aReservar, cliente, agendaRestaurante.getCuentaDeReservaciones());
             agendaRestaurante.agregarReservacion(nueva); // agrega la reservacion a la agenda
             agendaRestaurante.guardarAgenda();
         }
@@ -108,13 +108,15 @@ public class GestorReservacion {
         Calendar hoy = Calendar.getInstance();
         String regresar = " ";
         for (Reservacion reservacion : reservaciones) {
-            // El metodo compareTo() devuelve 0 si son iguales.
-            // El método compareTo() devuelve 1 si el "hoy"
-            // es mayor que el "nuevaFecha"
-            Calendar fecha = reservacion.getFecha();
-            if(hoy.compareTo(fecha) == 0){
-                regresar += fecha.toString();
-            }
+            try {
+                // El metodo compareTo() devuelve 0 si son iguales.
+                // El método compareTo() devuelve 1 si el "hoy" es mayor que el "fecha"
+                Calendar fecha = reservacion.getFecha();
+                if(fecha.compareTo(hoy) == 0){
+                    regresar += fecha.toString();
+                }
+            }catch (Exception e){}
+
         }
         return regresar;
     }
@@ -126,13 +128,15 @@ public class GestorReservacion {
         Calendar hoy = Calendar.getInstance();
         String regresar = " ";
         for (Reservacion reservacion : reservaciones) {
-            // El metodo compareTo() devuelve 0 si son iguales.
-            // El método compareTo() devuelve 1 si el "hoy"
-            // es mayor que el "nuevaFecha"
-            Calendar fecha = reservacion.getFecha();
-            if(hoy.compareTo(fecha) >= 0){
-                regresar += fecha.toString();
+            try{
+                // El metodo compareTo() devuelve 0 si son iguales.
+                // El método compareTo() devuelve 1 si el "hoy" es mayor que el "nuevaFecha".
+                Calendar fecha = reservacion.getFecha();
+                if(fecha.compareTo(hoy) >= 0){
+                    regresar += "\n" +reservacion.toString();
+                }
             }
+            catch (Exception e){}
         }
             return regresar;
     }
