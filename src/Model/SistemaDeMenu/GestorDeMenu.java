@@ -42,7 +42,7 @@ public class GestorDeMenu{
 		return new Menu().menuC();
 	}
 
-	public Platillo getPlatilloG(int id) throws IOException, FileNotFoundException, ClassNotFoundException{
+	public Platillo getPlatillo(int id) throws IOException, FileNotFoundException, ClassNotFoundException{
 		return new Menu().getPlatillo(id);
 	}
 
@@ -58,5 +58,6 @@ public class GestorDeMenu{
 		}
 		return ret;
 	}
+        
 
 }

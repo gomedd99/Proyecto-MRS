@@ -1,24 +1,25 @@
 package Model.SistemaDeReservacion;
 
-import Model.SistemaDeAutenticacion.Usuario;
+
+import Model.SistemaDeUsuario.Usuarios;
 
 import java.io.Serializable;
 import java.util.Calendar;
 
 public class Reservacion implements Serializable {
     private Calendar fecha;
-    Usuario cliente;
+    Usuarios cliente;
 
     public int id;
 
 
-    public Reservacion(Calendar fecha, Usuario cliente, int id) {
+    public Reservacion(Calendar fecha, Usuarios cliente, int id) {
         this.fecha = fecha;
         this.cliente = cliente;
         this.id = id;
     }
 
-    public Usuario getUsuario() {
+    public Usuarios getUsuario() {
         return cliente;
     }
 

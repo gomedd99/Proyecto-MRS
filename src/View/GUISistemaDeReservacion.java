@@ -1,8 +1,9 @@
 package View;
 
-import Model.SistemaDeAutenticacion.Usuario;
+
 import Model.SistemaDeReservacion.GestorReservacion;
 import Model.SistemaDeReservacion.Reservacion;
+import Model.SistemaDeUsuario.Usuarios;
 
 import java.io.IOException;
 import java.util.Calendar;
@@ -107,7 +108,7 @@ public class GUISistemaDeReservacion {
     }
 
 
-    public void menuClienteReservaciones(Usuario usr) throws IOException {
+    public void menuClienteReservaciones(Usuarios usr) throws IOException {
         int opcion = 0;
         Boolean activo = true;
 
@@ -151,7 +152,7 @@ public class GUISistemaDeReservacion {
 
     }
 
-    private void hacerUnaReservacion(Usuario usr) throws IOException {
+    private void hacerUnaReservacion(Usuarios usr) throws IOException {
         System.out.println("\t+ + Hacer una reservacion + +");
         Calendar fecha = pedirFecha();
 
@@ -165,7 +166,7 @@ public class GUISistemaDeReservacion {
         }
     }
 
-    private void eliminarUnaReservacionUsr(Usuario usr) throws IOException {
+    private void eliminarUnaReservacionUsr(Usuarios usr) throws IOException {
         System.out.println("\t- - Eliminar una reservacion - -");
         Calendar fecha = pedirFecha();
 
@@ -177,7 +178,7 @@ public class GUISistemaDeReservacion {
         }
     }
 
-    private void buscarUnaReservacion(Usuario usr) {
+    private void buscarUnaReservacion(Usuarios usr) {
         System.out.println("\t* * Buscar una reservacion * *");
         Calendar fecha = pedirFecha();
         Reservacion buscada = gestorReservacion.verReservacion(fecha, usr.getNombre());

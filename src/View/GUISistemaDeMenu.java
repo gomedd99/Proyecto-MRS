@@ -92,6 +92,11 @@ public class GUISistemaDeMenu{
 		return new GestorDeMenu().receteIngredientes(id);
 	}
 
+	public void menuClientes() throws IOException, FileNotFoundException, ClassNotFoundException{
+		System.out.println("Menu disponible");
+		System.out.println(new GestorDeMenu().menuDisponible());
+	}
+
     private int ingresoDatosInt() {
       Scanner scan = new Scanner(System.in);
       while (true) {

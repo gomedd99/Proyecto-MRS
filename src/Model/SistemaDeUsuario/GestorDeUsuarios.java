@@ -50,7 +50,7 @@ public class GestorDeUsuarios{
 
     }
 
-	public Usuario getUsuario(int id,String Cuenta, String pass){
+	public Usuarios getUsuario(int id,String Cuenta, String pass) throws IOException, FileNotFoundException, ClassNotFoundException{
 		return new ListaDeUsuarios().getUsuarioLi(id,pass,Cuenta);
 	}
 

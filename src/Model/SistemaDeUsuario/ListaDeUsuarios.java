@@ -124,7 +124,7 @@ public class ListaDeUsuarios {
         return false;
     }
 
-    public Boolean getUsuarioLi(int tipoDeUsuario,String pass,String name){
+    public Usuarios getUsuarioLi(int tipoDeUsuario,String pass,String name){
         for (int i = 0 ; i < numeroDeUsuarios ; i++ ) {
             switch (tipoDeUsuario) {
                 case 1:

@@ -1,6 +1,6 @@
 package View;
 
-import Model.SistemaDeAutenticacion.Usuario;
+
 import Model.SistemaDeCarrito.Carrito;
 import Model.SistemaDeCarrito.GestorCarrito;
 import Model.SistemaDeOrdenes.GestorOrdenes;
@@ -8,6 +8,8 @@ import Model.SistemaDeOrdenes.Orden;
 import Model.SistemaDePago.GestorDePago;
 import Model.SistemaDePago.Pago;
 import Model.SistemaDeReservacion.GestorReservacion;
+import Model.SistemaDeUsuario.Usuarios;
+import java.io.FileNotFoundException;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -20,7 +22,7 @@ public class GUISistemaDeCarrito {
         gestorCarrito = new GestorCarrito();
     }
 
-    public void menuCarrito(Usuario usr) throws IOException {
+    public void menuCarrito(Usuarios usr) throws IOException, FileNotFoundException, ClassNotFoundException {
         int opcion = 0;
         Boolean activo = true;
 
@@ -65,7 +67,7 @@ public class GUISistemaDeCarrito {
         }
     }
 
-    private void pagarMiCarrito(Usuario usr) throws IOException {
+    private void pagarMiCarrito(Usuarios usr) throws IOException {
         System.out.println("\t$ $ Pagar $ $ ");
         System.out.println(gestorCarrito.getCarrito());
         if(confirmarCompra()){
@@ -114,7 +116,7 @@ public class GUISistemaDeCarrito {
         System.out.println(gestorCarrito.getCarrito());
     }
 
-    private void agregarPlatilloMiCarrito() {
+    private void agregarPlatilloMiCarrito() throws IOException, FileNotFoundException, ClassNotFoundException {
         System.out.println("\t+ + Agregar Platillo + + ");
         System.out.println("\nIngrese el ID del platillo que desea agregar al carrito:");
         int id = ingresoDatosInt();
@@ -126,7 +128,7 @@ public class GUISistemaDeCarrito {
         }
     }
 
-    private void eliminarPlatilloMiCarrito(){
+    private void eliminarPlatilloMiCarrito() throws IOException, FileNotFoundException, ClassNotFoundException{
         System.out.println("\t- - Eliminar Platillo - - ");
         System.out.println("\nIngrese el ID del platillo que desea eliminar del carrito:");
         int id = ingresoDatosInt();

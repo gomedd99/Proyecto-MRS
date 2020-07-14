@@ -1,12 +1,13 @@
 package Model.SistemaDePago;
 
-import Model.SistemaDeAutenticacion.Usuario;
+
 import Model.SistemaDeCarrito.Carrito;
+import Model.SistemaDeUsuario.Usuarios;
 
 public class GestorDePago {
     public GestorDePago() {
     }
-    public Pago generarPago(Usuario user, float cuenta){
+    public Pago generarPago(Usuarios user, float cuenta){
         Pago pago = new Pago(user, cuenta);
         pago.generarPago();
         return pago;

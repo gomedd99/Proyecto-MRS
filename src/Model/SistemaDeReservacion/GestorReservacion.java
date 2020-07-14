@@ -1,6 +1,7 @@
 package Model.SistemaDeReservacion;
 
-import Model.SistemaDeAutenticacion.Usuario;
+
+import Model.SistemaDeUsuario.Usuarios;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class GestorReservacion {
         agendaRestaurante = new AgendaRestaurante();
     }
 
-    public Reservacion crearReservacion(Calendar aReservar , Usuario cliente) throws IOException {
+    public Reservacion crearReservacion(Calendar aReservar , Usuarios cliente) throws IOException {
         // Regresa null cuando no es posible hacer la reservacion, porque el dia no es valido
         Reservacion nueva = null;
 

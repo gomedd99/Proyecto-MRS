@@ -1,16 +1,17 @@
 package Model.SistemaDePago;
 
-import Model.SistemaDeAutenticacion.Usuario;
+
+import Model.SistemaDeUsuario.Usuarios;
 
 public class Pago {
     private float cuenta;
-    private Usuario usuario;
+    private Usuarios usuario;
     private boolean pago_verificado;
 
     private static int cuenta_pagos; // lleva la cuenta de los pagos que se han generado
     private int id;
 
-    public Pago(Usuario usuario, float cuenta) {
+    public Pago(Usuarios usuario, float cuenta) {
         this.cuenta = cuenta;
         this.usuario = usuario;
         pago_verificado= false;
@@ -30,11 +31,11 @@ public class Pago {
         this.cuenta = cuenta;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(Usuarios usuario) {
         this.usuario = usuario;
     }
 
-    public Usuario getUsuario() {
+    public Usuarios getUsuario() {
         return usuario;
     }
 

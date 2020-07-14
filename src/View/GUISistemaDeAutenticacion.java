@@ -6,12 +6,12 @@ import java.io.FileOutputStream;
 
 public class GUISistemaDeAutenticacion{
 
-        Usuario logIn = new Usuario();
+        Usuarios logIn = null;
 
   public GUISistemaDeAutenticacion(){
   }
 
-  public Boolean acceder() throws IOException, FileNotFoundException, ClassNotFoundException {
+  /*public Boolean acceder() throws IOException, FileNotFoundException, ClassNotFoundException {
     int selector;
     System.out.println("Que tipo de usuario eres \n1 Cliente\n2.Gerente\n3.Chef\n");
     selector = ingresoDatosInt();
@@ -25,11 +25,11 @@ public class GUISistemaDeAutenticacion{
         default:
             return false;
     }
-  }
+  }*/
 
 
 
-  private Usuario menuCliente() throws IOException, FileNotFoundException, ClassNotFoundException{
+  public Usuarios menuCliente() throws IOException, FileNotFoundException, ClassNotFoundException{
       long numerodetarjeta;
       int mesDeExpiracion;
       int year;
@@ -55,7 +55,7 @@ public class GUISistemaDeAutenticacion{
                     Ges.addUsuarioCliente(cuenta,contrasena,new TarjetaBancaria(numerodetarjeta,mesDeExpiracion,year));
                 case 2:
                     if (accederSistema(Ges,3)) {
-                        return login;
+                        return logIn;
                     }
                 case 0:
                     return null;
@@ -66,7 +66,7 @@ public class GUISistemaDeAutenticacion{
 
   }
 
-  private Boolean menuChef() throws IOException, FileNotFoundException, ClassNotFoundException{
+  public Boolean menuChef() throws IOException, FileNotFoundException, ClassNotFoundException{
       GestorDeUsuarios Ges = new GestorDeUsuarios();
       System.out.println("Ingresa la clave para poder ingresar a un usuario de tipo Chef");
       String pass = ingresoDatosString();
@@ -78,7 +78,7 @@ public class GUISistemaDeAutenticacion{
       }
   }
 
-  private Boolean menuGerente() throws IOException, FileNotFoundException, ClassNotFoundException{
+  public Boolean menuGerente() throws IOException, FileNotFoundException, ClassNotFoundException{
       GestorDeUsuarios Ges = new GestorDeUsuarios();
       int selector;
       System.out.println("Ingresa la clave para poder ingresar a un usuario de tipo Admin");

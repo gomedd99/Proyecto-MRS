@@ -42,5 +42,9 @@ public abstract class Usuarios implements Serializable {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    public String getNombre() {
+        return cuenta; //To change body of generated methods, choose Tools | Templates.
+    }
+
 
 }
