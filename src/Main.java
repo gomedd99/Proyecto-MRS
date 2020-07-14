@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
+        clearScreen();
         System.out.println("\t= = RESTAURANTE ``DONDE SIEMPRE´´ = =");
 
         // Que se identifique el usuario
@@ -46,7 +47,7 @@ public class Main {
 
     }
 
-    private static void menuClientes(Usuario usr) throws IOException {
+    private static void menuClientes(Usuario usr) throws IOException, ClassNotFoundException {
         int opcion = 0;
         Boolean activo = true;
 
