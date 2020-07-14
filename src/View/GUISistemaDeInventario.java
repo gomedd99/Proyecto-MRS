@@ -1,11 +1,15 @@
 package View;
-import Model.SistemaDeInventario.*;
+import SistemaDeInventario.GestorInventario;
+import SistemaDeInventario.Producto;
+//import Proyecto.Inventario.*;
 import java.util.Scanner;
 import java.io.*;
 import java.io.FileOutputStream;
-public class GUISistemaDeInventario{
-    public GUISistemaDeInventario(){
 
+public class GUISistemaDeInventario{
+    private GestorInventario g;
+    public GUISistemaDeInventario(){
+        g = new GestorInventario();
     }
     public void menuAdministradorInventario()throws FileNotFoundException, IOException, ClassNotFoundException{
         GestorInventario Ges = new GestorInventario();
