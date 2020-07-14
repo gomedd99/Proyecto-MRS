@@ -2,7 +2,7 @@
 
 Sistema Interactivo para el Restaurante ''Donde siempre''.
 
-La GUI Main se encuentra en: View/ GUIMain / Main.java 
+La se encuentra en: src / Main.java 
 
 `$ javac Main.java `
 
