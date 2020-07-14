@@ -53,6 +53,7 @@ public class GUISistemaDeAutenticacion{
                     System.out.println("Cual es tu año de experacion:\n");
                     year = ingresoDatosInt();
                     Ges.addUsuarioCliente(cuenta,contrasena,new TarjetaBancaria(numerodetarjeta,mesDeExpiracion,year));
+                    break;
                 case 2:
                     if (accederSistema(Ges,3)) {
                         return logIn;
@@ -61,6 +62,7 @@ public class GUISistemaDeAutenticacion{
                     return null;
                 default:
                         System.out.println("Ingrese una opcion correcta");
+                        break;
           }
       }
 
@@ -94,8 +96,10 @@ public class GUISistemaDeAutenticacion{
                     return accederSistema(Ges,1);
                 case 2:
                      agregarUsuarioStaff(Ges);
+                     break;
                 case 3:
                      borrarUsuario(Ges);
+                     break;
                 default:
                     System.out.println("Ingresa una opcion correcta");
               }
