@@ -8,7 +8,7 @@ import java.util.Calendar;
 
 public class Reservacion implements Serializable {
     private Calendar fecha;
-    Usuarios cliente;
+    private Usuarios cliente;
 
     public int id;
 
