@@ -8,6 +8,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         clearScreen();
+        GUISistemaDeAutenticacion guiA = new GUISistemaDeAutenticacion;
         System.out.println("\t= = RESTAURANTE ``DONDE SIEMPRE´´ = =");
 
         // Que se identifique el usuario
@@ -27,15 +28,25 @@ public class Main {
             switch (ir_a_menu){
                 case 1:
                     clearScreen();
-                    menuClientes(usr);
+                    usr = guiA.menuClientes();
+                    if (usr != null) {
+                        menuClientes(usr);
+                    }
+                    else {
+                        System.out.println("contraseña incorrecta");;
+                    }
                     break;
                 case 2:
                     clearScreen();
-                    menuGerente();
+                    if (guiA.menuGerente()) {
+                        menuGerente();
+                    }
                     break;
                 case 3:
                     clearScreen();
-                    menuChef();
+                    if (guiA.menuChef()) {
+                        menuChef();
+                    }
                     break;
                 case 0: // 0 para salir
                     flag = false;

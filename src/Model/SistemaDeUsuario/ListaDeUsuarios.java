@@ -124,5 +124,35 @@ public class ListaDeUsuarios {
         return false;
     }
 
+    public Boolean getUsuarioLi(int tipoDeUsuario,String pass,String name){
+        for (int i = 0 ; i < numeroDeUsuarios ; i++ ) {
+            switch (tipoDeUsuario) {
+                case 1:
+                    if (1 == usuarios.get(i).getId())
+                        if (usuarios.get(i).getContrasena().equals(pass) && usuarios.get(i).getCuenta().equals(name)) {
+                            return usuarios.get(i);
+                        }
+                    break;
+                case 2:
+                    if (2 == usuarios.get(i).getId())
+                        if (usuarios.get(i).getContrasena().equals(pass) && usuarios.get(i).getCuenta().equals(name)) {
+                            return usuarios.get(i);
+                        }
+                    break;
+                case 3:
+                    if (3 == usuarios.get(i).getId())
+                        if (usuarios.get(i).getContrasena().equals(pass) && usuarios.get(i).getCuenta().equals(name)) {
+                            return usuarios.get(i);
+                        }
+                    break;
+                default:
+                    System.out.println("Opcion Incorrecta");
+                    return null;
+            }
+
+        }
+        return null;
+    }
+
 
 }

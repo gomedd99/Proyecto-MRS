@@ -50,4 +50,8 @@ public class GestorDeUsuarios{
 
     }
 
+	public Usuario getUsuario(int id,String Cuenta, String pass){
+		return new ListaDeUsuarios().getUsuarioLi(id,pass,Cuenta);
+	}
+
 }

@@ -6,6 +6,8 @@ import java.io.FileOutputStream;
 
 public class GUISistemaDeAutenticacion{
 
+        Usuario logIn = new Usuario();
+
   public GUISistemaDeAutenticacion(){
   }
 
@@ -27,7 +29,7 @@ public class GUISistemaDeAutenticacion{
 
 
 
-  private Boolean menuCliente() throws IOException, FileNotFoundException, ClassNotFoundException{
+  private Usuario menuCliente() throws IOException, FileNotFoundException, ClassNotFoundException{
       long numerodetarjeta;
       int mesDeExpiracion;
       int year;
@@ -50,16 +52,18 @@ public class GUISistemaDeAutenticacion{
                     mesDeExpiracion = ingresoDatosInt();
                     System.out.println("Cual es tu año de experacion:\n");
                     year = ingresoDatosInt();
-                    return Ges.addUsuarioCliente(cuenta,contrasena,new TarjetaBancaria(numerodetarjeta,mesDeExpiracion,year));
+                    Ges.addUsuarioCliente(cuenta,contrasena,new TarjetaBancaria(numerodetarjeta,mesDeExpiracion,year));
                 case 2:
-                    return accederSistema(Ges,3);
+                    if (accederSistema(Ges,3)) {
+                        return login;
+                    }
                 case 0:
-                    return false;    
+                    return null;
                 default:
                         System.out.println("Ingrese una opcion correcta");
           }
       }
- 
+
   }
 
   private Boolean menuChef() throws IOException, FileNotFoundException, ClassNotFoundException{
@@ -89,9 +93,9 @@ public class GUISistemaDeAutenticacion{
                 case 1:
                     return accederSistema(Ges,1);
                 case 2:
-                    return agregarUsuarioStaff(Ges);
+                     agregarUsuarioStaff(Ges);
                 case 3:
-                    return borrarUsuario(Ges);
+                     borrarUsuario(Ges);
                 default:
                     System.out.println("Ingresa una opcion correcta");
               }
@@ -108,6 +112,7 @@ public class GUISistemaDeAutenticacion{
       cuenta = ingresoDatosString();
       System.out.println("Cual es tu contrasena:\n");
       contrasena = ingresoDatosString();
+      logIn = Ges.getUsuario(tipoUsuario,cuenta,contrasena);
       return Ges.ingresar(tipoUsuario,cuenta,contrasena);
   }
 
@@ -198,4 +203,4 @@ public class GUISistemaDeAutenticacion{
       }
     }
   }
-}  
+}
