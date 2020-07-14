@@ -1,7 +1,6 @@
 package View;
 import SistemaDeInventario.GestorInventario;
 import SistemaDeInventario.Producto;
-//import Proyecto.Inventario.*;
 import java.util.Scanner;
 import java.io.*;
 import java.io.FileOutputStream;
