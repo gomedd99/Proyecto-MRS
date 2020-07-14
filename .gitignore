@@ -16,6 +16,7 @@ build.xml
 manifest.mf
 
 # Archivos que se crean
+*.bin
 Inventario.bin
 ListaOrdenes.bin
 AgendaRestaurante.bin
