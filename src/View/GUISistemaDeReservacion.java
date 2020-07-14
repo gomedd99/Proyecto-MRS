@@ -16,7 +16,7 @@ public class GUISistemaDeReservacion {
         gestorReservacion = new GestorReservacion();
     }
 
-    public void menuAdminReservaciones() throws IOException {
+    public void menuAdminReservaciones() throws IOException, ClassNotFoundException {
         int opcion = 0;
         Boolean activo = true;
 
@@ -81,7 +81,7 @@ public class GUISistemaDeReservacion {
         System.out.println(gestorReservacion.verReservacionesHoy());
     }
 
-    private void eliminarUnaReservacion() throws IOException {
+    private void eliminarUnaReservacion() throws IOException, ClassNotFoundException {
         System.out.println("\t- - Eliminar una reservacion - -");
         System.out.println("\nIngrese el ID de la reservacion que desea eliminar:");
         int id = ingresoDatosInt();
