@@ -1,4 +1,4 @@
-package View;
+package View.GUISistemaDeInventario;
 import Model.SistemaDeInventario.GestorInventario;
 import Model.SistemaDeInventario.Producto;
 //import Proyecto.Inventario.*;

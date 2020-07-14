@@ -1,6 +1,6 @@
 package Model.SistemaDeMenu;
 import Model.SistemaDeInventario.GestorInventario;
-import View.GUISistemaDeMenu;
+import View.GUISistemaDeMenu.GUISistemaDeMenu;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;

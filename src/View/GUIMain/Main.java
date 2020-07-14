@@ -1,8 +1,13 @@
+package View.GUIMain;
 
-
-import Model.SistemaDeMenu.GestorDeMenu;
+import View.GUISistemaDeCarrito.GUISistemaDeCarrito;
 import Model.SistemaDeUsuario.Usuarios;
-import View.*;
+import View.GUISistemaDeAutenticacion.GUISistemaDeAutenticacion;
+import View.GUISistemaDeInventario.GUISistemaDeInventario;
+import View.GUISistemaDeMenu.GUISistemaDeMenu;
+import View.GUISistemaDeOrdenes.GUISistemaDeOrdenes;
+import View.GUISistemaDeReservacion.GUISistemaDeReservacion;
+
 import java.io.FileNotFoundException;
 
 import java.io.IOException;
@@ -23,9 +28,12 @@ public class Main {
         boolean flag = true;
 
         while(flag){ // El "login" deberia estar en un while
-            // - - - - - - - -  ESTO ES TEMPORAL
-            System.out.println("1 cliente, 2 gerente, 3 chef, 0 salir: ");
-
+            // - - - - - - - -
+            System.out.println(" Escoja una opcion:");
+            System.out.println("\n\t1. Cliente" +
+                                "\n\t2. Gerente" +
+                                "\n\t3. Chef" +
+                                "\n\t0. Salir ");
 
             int ir_a_menu = ingresoDatosInt(); // dependoendo el tipo de usuario lo manda a su respectivo menu
             // - - - - - - - -
@@ -38,7 +46,7 @@ public class Main {
                         menuClientes(usr);
                     }
                     else {
-                        System.out.println("contraseña incorrecta");;
+                        System.out.println("Contraseña incorrecta");;
                     }
                     break;
                 case 2:
@@ -57,7 +65,7 @@ public class Main {
                     flag = false;
                     break;
                 default:
-                    System.out.println("\tUSUARIO NO VALIDO");
+                    System.out.println("\tERROR: USUARIO NO VALIDO");
             }
         }
 

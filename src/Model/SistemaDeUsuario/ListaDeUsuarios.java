@@ -41,7 +41,7 @@ public class ListaDeUsuarios {
             oos.writeObject( usuarios );
             fos.close();
         } catch(Exception e) {
-            System.out.println("No guardado");
+            System.out.println("MISSINF: ListaUsuarios.bin en guardarUsuarios");
             return false;
         }finally{
             if (oos != null) {

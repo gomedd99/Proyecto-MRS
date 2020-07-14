@@ -1,4 +1,4 @@
-package View;
+package View.GUISistemaDeReservacion;
 
 
 import Model.SistemaDeReservacion.GestorReservacion;

@@ -1,4 +1,4 @@
-package View;
+package View.GUISistemaDeAutenticacion;
 import Model.SistemaDeUsuario.*;
 import java.util.Scanner;
 import java.io.*;
@@ -6,10 +6,12 @@ import java.io.FileOutputStream;
 
 public class GUISistemaDeAutenticacion{
 
+        Usuarios logIn = null;
+
   public GUISistemaDeAutenticacion(){
   }
 
-  public Boolean acceder() throws IOException, FileNotFoundException, ClassNotFoundException {
+  /*public Boolean acceder() throws IOException, FileNotFoundException, ClassNotFoundException {
     int selector;
     System.out.println("Que tipo de usuario eres \n1 Cliente\n2.Gerente\n3.Chef\n");
     selector = ingresoDatosInt();
@@ -23,11 +25,11 @@ public class GUISistemaDeAutenticacion{
         default:
             return false;
     }
-  }
+  }*/
 
 
 
-  private Boolean menuCliente() throws IOException, FileNotFoundException, ClassNotFoundException{
+  public Usuarios menuCliente() throws IOException, FileNotFoundException, ClassNotFoundException{
       long numerodetarjeta;
       int mesDeExpiracion;
       int year;
@@ -35,11 +37,12 @@ public class GUISistemaDeAutenticacion{
       String contrasena;
       GestorDeUsuarios Ges = new GestorDeUsuarios();
       while (true) {
-          System.out.println("Quieres:\n1.Crear Nuevo Usuario\n2.Acceder\n0.Salir");
+          System.out.println("\nQuieres: \n\t1.Crear Nuevo Usuario\n\t2.Acceder\n\t0.Salir");
           int seleccion = ingresoDatosInt();
+          clearScreen(); // Limpia la Pantalla
           switch (seleccion){
                 case 1:
-                    System.out.println("View.GUISistemaDeAutenticacion.menuCliente()");
+                    System.out.println("\t= = Crear Usuario = =\n");
                     System.out.println("Cual es tu nombre de usuario:\n");
                     cuenta = ingresoDatosString();
                     System.out.println("Cual es tu contrasena:\n");
@@ -50,19 +53,24 @@ public class GUISistemaDeAutenticacion{
                     mesDeExpiracion = ingresoDatosInt();
                     System.out.println("Cual es tu año de experacion:\n");
                     year = ingresoDatosInt();
-                    return Ges.addUsuarioCliente(cuenta,contrasena,new TarjetaBancaria(numerodetarjeta,mesDeExpiracion,year));
+                    Ges.addUsuarioCliente(cuenta,contrasena,new TarjetaBancaria(numerodetarjeta,mesDeExpiracion,year));
+                    break;
                 case 2:
-                    return accederSistema(Ges,3);
+                    if (accederSistema(Ges,3)) {
+                        return logIn;
+                    }
                 case 0:
-                    return false;    
+                    return null;
                 default:
                         System.out.println("Ingrese una opcion correcta");
+                        break;
           }
+          clearScreen();
       }
- 
+
   }
 
-  private Boolean menuChef() throws IOException, FileNotFoundException, ClassNotFoundException{
+  public Boolean menuChef() throws IOException, FileNotFoundException, ClassNotFoundException{
       GestorDeUsuarios Ges = new GestorDeUsuarios();
       System.out.println("Ingresa la clave para poder ingresar a un usuario de tipo Chef");
       String pass = ingresoDatosString();
@@ -74,14 +82,14 @@ public class GUISistemaDeAutenticacion{
       }
   }
 
-  private Boolean menuGerente() throws IOException, FileNotFoundException, ClassNotFoundException{
+  public Boolean menuGerente() throws IOException, FileNotFoundException, ClassNotFoundException{
       GestorDeUsuarios Ges = new GestorDeUsuarios();
       int selector;
       System.out.println("Ingresa la clave para poder ingresar a un usuario de tipo Admin");
       String pass = ingresoDatosString();
       if (Ges.autorizarGerente(pass)) {
           while (true) {
-              System.out.println("Que Quieres hacer\n1.Ingresar al sistema\n2.Agregar Usuario Chef o Gerente\n3.Borrar Usuario\n0.Salir");
+              System.out.println("Que Quieres hacer\n\t1.Ingresar al sistema \n\t2.Agregar Usuario Chef o Gerente \n\t3.Borrar Usuario\n\t0.Salir");
               selector = ingresoDatosInt();
               switch (selector) {
                 case 0:
@@ -89,12 +97,15 @@ public class GUISistemaDeAutenticacion{
                 case 1:
                     return accederSistema(Ges,1);
                 case 2:
-                    return agregarUsuarioStaff(Ges);
+                     agregarUsuarioStaff(Ges);
+                     break;
                 case 3:
-                    return borrarUsuario(Ges);
+                     borrarUsuario(Ges);
+                     break;
                 default:
                     System.out.println("Ingresa una opcion correcta");
               }
+              clearScreen(); // Limpia pantalla
           }
       }else{
           return false;
@@ -104,10 +115,12 @@ public class GUISistemaDeAutenticacion{
   private Boolean accederSistema(GestorDeUsuarios Ges,int tipoUsuario) throws IOException, FileNotFoundException, ClassNotFoundException{
       String cuenta;
       String contrasena;
+      System.out.println("\t = = Acceder al Sistema = =");
       System.out.println("Cual es tu nombre de usuario:\n");
       cuenta = ingresoDatosString();
       System.out.println("Cual es tu contrasena:\n");
       contrasena = ingresoDatosString();
+      logIn = Ges.getUsuario(tipoUsuario,cuenta,contrasena);
       return Ges.ingresar(tipoUsuario,cuenta,contrasena);
   }
 
@@ -116,6 +129,7 @@ public class GUISistemaDeAutenticacion{
     String contrasena;
     String cuenta;
     int selector;
+    System.out.println("\t + + Agregar Staff + +");
     System.out.println("Que tipo de usuario quieres agregar \n1.Gerente\n2.Chef");
     selector = ingresoDatosInt();
     switch (selector) {
@@ -146,7 +160,8 @@ public class GUISistemaDeAutenticacion{
     String contrasena;
     String cuenta;
     int i;
-    System.out.println("Que tipo de usuario quieres Borrar \n1 Cliente\n2.Gerente\n3.Chef\n");
+      System.out.println("\t + + Borrar Staff + +");
+    System.out.println("Que tipo de usuario quieres Borrar \n\t1. Cliente\n\t2.Gerente\n\t3.Chef\n");
     selector = ingresoDatosInt();
     System.out.println("Cual es tu nombre de usuario:\n");
     cuenta = ingresoDatosString();
@@ -162,6 +177,8 @@ public class GUISistemaDeAutenticacion{
       return false;
     }
   }
+
+    // U T I L I D A D E S
 
   private int ingresoDatosInt() {
     Scanner scan = new Scanner(System.in);
@@ -198,4 +215,9 @@ public class GUISistemaDeAutenticacion{
       }
     }
   }
-}  
+
+    public static void clearScreen() {
+      System.out.print("\033[H\033[2J");
+      System.out.flush();
+    }
+}

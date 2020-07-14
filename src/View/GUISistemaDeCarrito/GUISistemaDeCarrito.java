@@ -1,4 +1,4 @@
-package View;
+package View.GUISistemaDeCarrito;
 
 
 import Model.SistemaDeCarrito.Carrito;
@@ -7,7 +7,6 @@ import Model.SistemaDeOrdenes.GestorOrdenes;
 import Model.SistemaDeOrdenes.Orden;
 import Model.SistemaDePago.GestorDePago;
 import Model.SistemaDePago.Pago;
-import Model.SistemaDeReservacion.GestorReservacion;
 import Model.SistemaDeUsuario.Usuarios;
 import java.io.FileNotFoundException;
 

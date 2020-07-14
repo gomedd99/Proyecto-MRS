@@ -1,4 +1,4 @@
-package View;
+package View.GUISistemaDeOrdenes;
 
 
 import Model.SistemaDeOrdenes.GestorOrdenes;

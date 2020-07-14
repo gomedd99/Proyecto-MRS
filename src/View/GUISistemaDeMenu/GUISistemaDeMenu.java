@@ -1,4 +1,4 @@
-package View;
+package View.GUISistemaDeMenu;
 
 
 import Model.SistemaDeInventario.GestorInventario;
