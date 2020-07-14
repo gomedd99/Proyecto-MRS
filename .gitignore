@@ -19,5 +19,5 @@ manifest.mf
 Inventario.bin
 ListaOrdenes.bin
 AgendaRestaurante.bin
-Usuarios.bin
+ListaUsuarios.bin
 *.class
