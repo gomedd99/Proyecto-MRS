@@ -9,15 +9,13 @@ public class Reservacion implements Serializable {
     private Calendar fecha;
     Usuario cliente;
 
-    private static int cuentaReservaciones;
     public int id;
 
 
-    public Reservacion(Calendar fecha, Usuario cliente) {
+    public Reservacion(Calendar fecha, Usuario cliente, int id) {
         this.fecha = fecha;
         this.cliente = cliente;
-        cuentaReservaciones++;
-        id = cuentaReservaciones;
+        this.id = id;
     }
 
     public Usuario getUsuario() {
@@ -52,9 +50,9 @@ public class Reservacion implements Serializable {
 
     @Override
     public String toString() {
-        return "Reservacion #: " + id  +
+        return "Reservacion ID: " + id  +
                 "\nFecha: " + fecha.getTime() +
-                //"\nA nombre de " + cliente +
+                //"\nA nombre de " + cliente + // COMENTAR AL PROBAR
                 '\n';
     }
 }
