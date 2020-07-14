@@ -19,7 +19,7 @@ public class GUISistemaDeOrdenes {
         int opcion = 0;
         Boolean activo = true;
 
-        System.out.println("\n= =\tAdministrar ordenes = =\n");
+        System.out.println("\n\t= = Administrar ordenes = =\n");
 
         while(activo) {
             System.out.println("Ingrese la opción deseada " +
