@@ -76,7 +76,7 @@ public class Main {
                     activo = false;
                     break;
                 case 1:
-                    // GUI MENU - PARA CLIENTES
+                    System.out.println(new GestorDeMenu().menuClientes());
                     break;
 
                 case 2:
@@ -113,7 +113,8 @@ public class Main {
                     activo = false;
                     break;
                 case 1:
-                    // GUI MENU - PARA CHEFS
+                    GUISistemaDeMenu guiM = new GUISistemaDeMenu();
+                    guiM.menuChef();
                     break;
 
                 case 2:
