@@ -1,5 +1,3 @@
-package View.GUIMain;
-
 import View.GUISistemaDeCarrito.GUISistemaDeCarrito;
 import Model.SistemaDeUsuario.Usuarios;
 import View.GUISistemaDeAutenticacion.GUISistemaDeAutenticacion;
@@ -74,7 +72,7 @@ public class Main {
     private static void menuClientes(Usuarios usr) throws IOException, ClassNotFoundException {
         int opcion = 0;
         Boolean activo = true;
-
+        clearScreen();
         while(activo) {
             System.out.println("\n\t= = Menu Principal = = ");
             System.out.println("\nIngrese la opción deseada\n" +
@@ -113,7 +111,7 @@ public class Main {
     private static void menuChef() throws IOException, FileNotFoundException, ClassNotFoundException {
         int opcion = 0;
         Boolean activo = true;
-
+        clearScreen();
         while(activo) {
             System.out.println("\n\t= = Menu Chef = = ");
             System.out.println("\nIngrese la opción deseada\n" +
@@ -146,7 +144,7 @@ public class Main {
     private static void menuGerente() throws IOException, ClassNotFoundException {
         int opcion = 0;
         Boolean activo = true;
-
+        clearScreen();
         while(activo) {
             System.out.println("\n\t= = Menu Gerente = = ");
             System.out.println("\nIngrese la opción deseada\n" +
