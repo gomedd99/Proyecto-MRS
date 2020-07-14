@@ -23,10 +23,10 @@ public class GUISistemaDeOrdenes {
 
         while(activo) {
             System.out.println("Ingrese la opción deseada " +
-                    "\n1. \tVer Ordenes " +
-                    "\n2. \tActualizar estado de una orden" +
-                    "\n3. \tBuscar una orden" +
-                    "\n0. \tRegresar");
+                    "\n\t1. Ver Ordenes " +
+                    "\n\t2. Actualizar estado de una orden" +
+                    "\n\t3. Buscar una orden" +
+                    "\n\t0. Regresar");
             opcion = ingresoDatosInt();
             clearScreen(); // limpia la pantalla
             switch (opcion) {
@@ -120,8 +120,8 @@ public class GUISistemaDeOrdenes {
 //
 //        while(activo) {
 //            System.out.println("Ingrese la opción deseada " +
-//                    "\n1. \tVer Orden " +
-//                    "\n2. \tEditar Orden" +
+//                    "\n1. \tVer mis Ordenes " +
+//                    "\n2. \tBuscar Orden" +
 //                    "\n3. \tEliminar Orden" +
 //                    "\n0. \tRegresar");
 //            opcion = ingresoDatosInt();
