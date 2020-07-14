@@ -10,16 +10,16 @@ public class AgendaRestaurante {
     private ArrayList<Reservacion> reservaciones;
     private String nombreArchivo ;
 
-    public AgendaRestaurante() throws IOException {
+    public AgendaRestaurante() throws FileNotFoundException, IOException {
         nombreArchivo = "AgendaRestaurante.bin";
         ObjectInputStream ois = null;
         try {
             FileInputStream fis = new FileInputStream( nombreArchivo );
             ois = new ObjectInputStream( fis );
-            reservaciones = (ArrayList<Reservacion>) ois.readObject();
+            reservaciones = (ArrayList) ois.readObject();
             fis.close();
         } catch(IOException | ClassNotFoundException e) {
-            reservaciones = new ArrayList<Reservacion>();
+            reservaciones = new ArrayList<>();
         }finally{
             if (ois != null) {
                 ois.close();
@@ -63,10 +63,7 @@ public class AgendaRestaurante {
 
     public boolean agregarReservacion(Reservacion nuevaReservacion){
         boolean regresar = true;
-        try {
-            reservaciones.add(nuevaReservacion);
-        }
-        catch (Exception e) {
+        if ( !reservaciones.add(nuevaReservacion)){
             System.out.println("ERROR: No se agrego la reservacion");
             regresar = false;
         }
@@ -120,7 +117,7 @@ public class AgendaRestaurante {
         return regresar;
     }
 
-    public Boolean guardarAgenda()throws IOException {
+    public Boolean guardarAgenda()throws FileNotFoundException, IOException, ClassNotFoundException {
         ObjectOutputStream oos = null;
         try {
             FileOutputStream fos = new FileOutputStream( nombreArchivo );
@@ -128,7 +125,7 @@ public class AgendaRestaurante {
             oos.writeObject( reservaciones );
             fos.close();
         } catch(IOException e) {
-            System.out.println("No guardo la agenda");
+            System.out.println("\nMISSING: AgendaRestaurante.bin en guardarAgenda()");
             return false;
         }finally{
             if (oos != null) {

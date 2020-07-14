@@ -97,7 +97,7 @@ public class ListaOrdenes {
             oos.writeObject( ordenes );
             fos.close();
         } catch(IOException e) {
-            System.out.println("No guardaron las ordenes");
+            System.out.println("MISSING: ListaOrdenes.bin en guardarOrdenes()");
             return false;
         }finally{
             if (oos != null) {
@@ -111,8 +111,11 @@ public class ListaOrdenes {
         // Regresa las ordenes que no han sido completadas
         String regresar = "";
         for (Orden x : ordenes) {
-            if (x.getEstadoActual() != "LISTA!")
-                regresar = x.toString();
+            try {
+                if (x.getEstadoActual() != "LISTA!")
+                    regresar = x.toString();
+            }
+            catch (Exception e){}
         }
         return regresar;
     }
