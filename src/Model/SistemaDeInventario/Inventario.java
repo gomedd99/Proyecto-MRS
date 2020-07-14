@@ -1,5 +1,5 @@
-package Model.SistemaDeInventario;
-import Model.SistemaDeInventario.*;
+//package Model.SistemaDeInventario;
+//import Model.SistemaDeInventario.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.io.FileOutputStream;

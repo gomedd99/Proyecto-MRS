@@ -1,10 +1,7 @@
 package Model.SistemaDeInventario;
-//import Model.SistemaDeInventario.*;
-import java.io.FileOutputStream;
+import Model.SistemaDeMenu.Platillo;
 import java.io.*;
-import java.io.ObjectOutputStream;
-import java.io.FileInputStream;
-import java.io.ObjectInputStream;
+
 
 public class GestorInventario {
 
@@ -12,14 +9,15 @@ public class GestorInventario {
 	public GestorInventario() {
 	}
 
-    /*public Boolean infoMenu(Platillo plato){
+    public Boolean infoMenu(Platillo plato) throws IOException, FileNotFoundException, ClassNotFoundException{
         Inventario inven = new  Inventario();
-        for (int i; i < plato.getElementos() ; i++ ) {
+        
+        for (int i; i < plato.get() ; i++ ) {
             if (!(inven.getProducto(plato.getIngrediente(i).getId()).comprobarExistensias(plato.getRecursos(i))))
                 return false;
         }
         return true;
-    }*/
+    }
 
     /*public Boolean agregarAlCarrito(Platillo plato){
         Inventario inven = new  Inventario();
