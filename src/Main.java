@@ -81,7 +81,8 @@ public class Main {
                     activo = false;
                     break;
                 case 1:
-                    new GUISistemaDeMenu().menuClientes();
+                    GUISistemaDeMenu guiM = new GUISistemaDeMenu();
+                    guiM.menuClientes();
                     break;
 
                 case 2:
