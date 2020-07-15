@@ -248,7 +248,8 @@ public class GUISistemaDeReservacion {
         int min = ingresoDatosInt();
 
         System.out.println("\nIngrese el mes ");
-        int mes = ingresoDatosInt();
+        int mes = ingresoDatosInt(); // 0 = Enero, 1 = Febrero, etc
+        mes = mes - 1;
 
         System.out.println("\nIngrese el año ");
         int anio = ingresoDatosInt();
