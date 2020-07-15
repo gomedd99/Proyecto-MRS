@@ -2,11 +2,15 @@
 
 Sistema Interactivo para el Restaurante ''Donde siempre''.
 
-El main se encuentra en: src / Main.java 
+El main se encuentra en: src / Main.java
 
-`$ javac Main.java `
+Una forma para compiplar es:
 
-`$ javac Main `
+`$ cd src `
+
+`$ javac @sources.txt `
+
+`$ java Main `
 
 ## Autorizar Staff
 
