@@ -3,7 +3,12 @@ package Model.SistemaDeReservacion;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class AgendaRestaurante {
 
@@ -47,9 +52,24 @@ public class AgendaRestaurante {
         Reservacion regresar = null;
         for (int i=0; i<reservaciones.size(); i++) {
             Reservacion reservacion = reservaciones.get(i);
-            // El metodo compareTo() devuelve 0 si son iguales.
-            if ( reservacion.getFecha().compareTo(fecha) == 0 &&
-                 reservacion.getUsuario().getNombre() == usuario){
+            // El metodo compareTo() devuelve 0 si son iguales
+
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+            int anio_reservacion = reservacion.getFecha().get(Calendar.YEAR);
+            int mes_reservacion = reservacion.getFecha().get(Calendar.MONTH);
+            int dia_reservacion = reservacion.getFecha().get(Calendar.DATE);
+
+            int anio_busqueda = fecha.get(Calendar.YEAR);
+            int mes_busqueda = fecha.get(Calendar.MONTH);
+            int dia_busqueda = fecha.get(Calendar.DATE);
+
+            boolean anio_igual = (anio_busqueda == anio_reservacion);
+            boolean mes_igual = (mes_busqueda == mes_reservacion);
+            boolean dia_igual = (dia_busqueda == dia_reservacion);
+
+            if ( anio_igual && mes_igual &&  dia_igual &&
+                 reservacion.getUsuario().getNombre().equals(usuario)){
                 regresar = reservacion;
                 break;
             }
@@ -73,6 +93,7 @@ public class AgendaRestaurante {
 
     public boolean agregarReservacion(Reservacion nuevaReservacion){
         boolean regresar = true;
+        cuentaDeReservaciones++;
         if ( !reservaciones.add(nuevaReservacion)){
             System.out.println("ERROR: No se agrego la reservacion");
             regresar = false;
@@ -93,8 +114,10 @@ public class AgendaRestaurante {
             {
                 Reservacion reservacion = (Reservacion) itr.next();
                 if (reservacion.getFecha().compareTo(fecha) == 0 &&
-                        reservacion.getUsuario().getNombre() == nombre)
+                        reservacion.getUsuario().getNombre() == nombre) {
                     itr.remove();
+                    cuentaDeReservaciones--;
+                }
             }
         }
         catch (Exception e) {
@@ -116,8 +139,10 @@ public class AgendaRestaurante {
             while (itr.hasNext())
             {
                 Reservacion reservacion = (Reservacion) itr.next();
-                if ( reservacion == elimReserv)
+                if ( reservacion == elimReserv) {
                     itr.remove();
+                    cuentaDeReservaciones--;
+                }
             }
         }
         catch (Exception e) {

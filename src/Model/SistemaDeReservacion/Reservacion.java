@@ -51,9 +51,9 @@ public class Reservacion implements Serializable {
 
     @Override
     public String toString() {
-        return "Reservacion ID: " + id  +
+        return "\nReservacion ID: " + id  +
                 "\nFecha: " + fecha.getTime() +
-                //"\nA nombre de " + cliente + // COMENTAR AL PROBAR
+                "\nA nombre de " + cliente + // COMENTAR AL PROBAR
                 '\n';
     }
 }
