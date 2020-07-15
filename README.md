@@ -14,6 +14,8 @@ Una forma para compiplar es:
 
 ## Autorizar Staff
 
-autorizarGerente: 5591708787
+Claves para poder ingresar
+
+autorizarGerente/Admin: 5591708787
 
 autorizarChef: 5545497895
